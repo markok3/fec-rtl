@@ -19,7 +19,6 @@ const Input: React.FC<InputProps> = ({
   svgIcon,
   type,
 }) => {
-  console.log(svgIcon);
   return (
     <div>
       {/* <input value={value} onChange={onChange} />

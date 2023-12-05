@@ -20,7 +20,7 @@ type Inputs = {
   phoneInputWithCountrySelect: string;
 };
 
-type InputProps = {
+export type InputProps = {
   name: string;
   value: string;
   placeholder?: string;
@@ -57,12 +57,17 @@ const inputData: InputProps[] = [
   },
 ];
 
-const CreateAccountForm = () => {
+interface CreateAccountFormProps {
+  onNext: () => void;
+}
+
+const CreateAccountForm: React.FC<CreateAccountFormProps> = ({ onNext }) => {
   const {
     handleSubmit,
     control,
     formState: { errors },
   } = useForm<Inputs>();
+
   const [formData, setFormData] = useState<Inputs>();
   const [phone, setPhone] = useState("");
 
@@ -74,9 +79,8 @@ const CreateAccountForm = () => {
 
     setFormData(newData);
     // use newData as required
+    console.log(formData);
   };
-
-  console.log(formData);
 
   return (
     <div className="flex flex-col items-center">
@@ -124,10 +128,11 @@ const CreateAccountForm = () => {
             type="submit"
             className="w-full h-14"
             label="Sign up"
+            onClick={() => onNext()}
           />
           <p className="mt-1 text-xs  text-gray-400 ">
             Already have an account?{" "}
-            <a href="/sign-in" className="text-blue hover:und">
+            <a href="/login" className="text-blue hover:underline">
               Sign in
             </a>
           </p>

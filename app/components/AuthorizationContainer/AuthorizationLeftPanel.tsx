@@ -32,9 +32,9 @@ const AuthorizationLeftPanel: React.FC<AuthorizationLeftPanelProps> = ({
           <div>
             {/* add the divs  */}
             <div className="text-white text-4xl font-bold mt-24">
-              Join Today!
+              {headerText}
             </div>
-            <div className="text-white">Create Your Account And Get Access</div>
+            <div className="text-white">{paragraphText}</div>
           </div>
         </div>
       </div>

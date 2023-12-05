@@ -49,8 +49,6 @@ const LanguageSelect = () => {
     };
   }, []);
 
-  console.log(language);
-
   return (
     <div className="absolute " ref={dropdownRef}>
       {/* DROPDOWN BUTTON */}

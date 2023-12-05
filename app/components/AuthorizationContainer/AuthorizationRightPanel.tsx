@@ -14,7 +14,14 @@ export type CountrySelectValue = {
   value: string;
 };
 
-const AuthorizationRightPanel = () => {
+interface AuthorizationRightPanelProps {
+  bodyComponent: React.ReactNode;
+  onNext?: () => void;
+}
+
+const AuthorizationRightPanel: React.FC<AuthorizationRightPanelProps> = ({
+  bodyComponent,
+}) => {
   const [location, setLocation] = useState<CountrySelectValue>();
   return (
     <div className="min-h-screen ">
@@ -25,9 +32,7 @@ const AuthorizationRightPanel = () => {
               <LanguageSelect />
             </div>
             {/* This should be body */}
-            <div className="">
-              <CreateAccountForm />
-            </div>
+            <div className="">{bodyComponent}</div>
           </div>
         </div>
       </div>
