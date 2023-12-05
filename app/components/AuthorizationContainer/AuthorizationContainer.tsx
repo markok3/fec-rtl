@@ -67,7 +67,7 @@ const AuthorizationContainer = () => {
       <div className="grid md:grid-cols-2">
         <div className="hidden md:block">
           <AuthorizationLeftPanel
-            headerText="Choose Method"
+            headerText=""
             paragraphText="You Must Choose The Method Of Calculating Points That Is Appropriate For Your Business"
           />
         </div>
