@@ -26,7 +26,7 @@ export type InputProps = {
   placeholder?: string;
   label?: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-  svgIcon?: StaticImageData;
+  svgIcon?: React.ElementType;
   type?: string;
 };
 

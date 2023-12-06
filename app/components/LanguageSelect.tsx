@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import arrowDown from "@/public/images/svgs/arrowDown.svg";
+import ArrowDown from "@/public/images/svgs/arrowDown.svg";
 import britishFlag from "@/public/images/svgs/englishFlag.svg";
 import saudiFlag from "@/public/images/svgs/saudiFlag.svg";
 
@@ -50,38 +50,35 @@ const LanguageSelect = () => {
   }, []);
 
   return (
-    <div className="absolute " ref={dropdownRef}>
+    <div className="relative z-50 " ref={dropdownRef}>
       {/* DROPDOWN BUTTON */}
       <div
-        className="flex flex-row px-3 py-2 border rounded-md cursor-pointer gap-2 "
+        className="flex relative flex-row px-3 py-2 border rounded-md cursor-pointer gap-2 "
         onClick={() => setIsOpen(!isOpen)}
       >
-        <Image
-          src={language.svgIcon}
-          alt="countryIcon"
-          width={32}
-          height={24}
-        ></Image>
-        <Image src={arrowDown} alt="arrowDown" className=""></Image>
+        <language.svgIcon className="w-[32px] h-[24px]" />
+        <ArrowDown />
+        {/* <Image src={arrowDown} alt="arrowDown" className=""></Image> */}
       </div>
 
       {/* DROPDOWN LIST */}
       {isOpen && (
-        <div className="mt-2 ">
+        <div className="mt-2 absolute  ">
           {languageOptions.map((option) => {
             if (option.label !== language.label)
               return (
                 <div
                   key={option.label}
-                  className="flex items-center justify-center mt-1px-3 py-2 border rounded-md cursor-pointer hover:bg-gray-100"
+                  className="flex items-center justify-center mt-1 px-7 py-2 border rounded-md cursor-pointer bg-white hover:bg-gray-100"
                   onClick={() => handleOptionClick(option)}
                 >
-                  <Image
+                  {/* <Image
                     src={option.svgIcon}
                     alt="countryIcon"
                     width={32}
                     height={24}
-                  ></Image>
+                  ></Image> */}
+                  <option.svgIcon className="w-[32px] h-[24px]" />
                 </div>
               );
           })}

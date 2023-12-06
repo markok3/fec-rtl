@@ -26,9 +26,9 @@ const MethodCard: React.FC<MethodCardProps> = ({
           ? " bg-blue text-white b-1 border-blue"
           : "text-[#CCCCCC] border-gray-500"
       } 
-        border-[2px] rounded-xl  hover:cursor-pointer w-[200px]`}
+        border-[2px] rounded-xl  hover:cursor-pointer pr-4 md:pr-8`}
     >
-      <div className="flex flex-row space-x-2 p-3 ">
+      <div className="flex flex-row space-x-2 p-1 md:p-3">
         <span
           className={`${
             selectedCard === value

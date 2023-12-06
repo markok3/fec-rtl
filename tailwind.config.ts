@@ -15,6 +15,8 @@ const config: Config = {
       },
       colors: {
         blue: "#401BFF", // Add your custom color here
+        themeGray: "#999999",
+        themeGrayLight: "#E6E6E6",
       },
     },
   },

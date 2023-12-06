@@ -7,6 +7,7 @@ import { useRouter, usePathname } from "next/navigation";
 import LoginAccountForm from "./authComponents/LoginAccountForm";
 import CreateAccountForm from "./authComponents/CreateAccountForm";
 import ChooseMethodForm from "./authComponents/ChooseMethodForm";
+import Subscription from "./authComponents/Subscription";
 
 enum STEPS {
   SIGN_UP = 0,
@@ -90,7 +91,7 @@ const AuthorizationContainer = () => {
           />
         </div>
         <div>
-          <AuthorizationRightPanel bodyComponent={<ChooseMethodForm />} />
+          <AuthorizationRightPanel bodyComponent={<Subscription />} />
         </div>
       </div>
     );
