@@ -1,26 +1,30 @@
 import React, { useEffect, useRef, useState } from "react";
 import ArrowDown from "@/public/images/svgs/arrowDown.svg";
 
-type DateOption = {
-  date: string;
+type SortPoints = {
+  sortPoints: string;
 };
 
-const dateOptions: DateOption[] = [
-  { date: "Today" },
-  { date: "Yesterday" },
-  { date: "Last 7 days" },
-  { date: "Last 30 days" },
-  { date: "This month" },
-  { date: "Last month" },
+const sortPointsOptions: SortPoints[] = [
+  { sortPoints: "asc" },
+  { sortPoints: "desc" },
 ];
 
-const DateSelect = () => {
-  const [date, setDate] = useState<DateOption>({ date: "Today" });
+interface PointsSortPointsDropdownProps {
+  className?: string;
+}
+
+const PointsSortPointsDropdown: React.FC<PointsSortPointsDropdownProps> = ({
+  className,
+}) => {
+  const [sortPoints, setsortPoints] = useState<SortPoints>({
+    sortPoints: "asc",
+  });
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const handleOptionClick = (option: DateOption) => {
-    setDate(option);
+  const handleOptionClick = (option: SortPoints) => {
+    setsortPoints(option);
     setIsOpen(false);
   };
 
@@ -47,11 +51,11 @@ const DateSelect = () => {
     >
       {/* DROPDOWN BUTTON */}
       <div
-        className="flex relative flex-row w-36 px-2 py-2 border rounded-md cursor-pointer gap-2 "
+        className={`flex relative flex-row w-36 px-2 py-2 border rounded-md cursor-pointer gap-2  ${className}`}
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="flex justify-between w-full">
-          <span>{date.date}</span>
+          <span>{sortPoints.sortPoints}</span>
           <ArrowDown />
         </div>
         {/* <Image src={arrowDown} alt="arrowDown" className=""></Image> */}
@@ -59,16 +63,16 @@ const DateSelect = () => {
 
       {/* DROPDOWN LIST */}
       {isOpen && (
-        <div className="mt-2 absolute w-36">
-          {dateOptions.map((option) => {
-            if (option.date !== date.date)
+        <div className={`mt-2 absolute w-36 ${className}`}>
+          {sortPointsOptions.map((option) => {
+            if (option.sortPoints !== sortPoints.sortPoints)
               return (
                 <div
-                  key={option.date}
+                  key={option.sortPoints}
                   className="w-full flex items-center justify-center mt-1  py-2 border rounded-md cursor-pointer bg-white hover:bg-gray-100"
                   onClick={() => handleOptionClick(option)}
                 >
-                  <span>{option.date}</span>
+                  <span>{option.sortPoints}</span>
                 </div>
               );
           })}
@@ -78,4 +82,4 @@ const DateSelect = () => {
   );
 };
 
-export default DateSelect;
+export default PointsSortPointsDropdown;

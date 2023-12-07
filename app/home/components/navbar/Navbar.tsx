@@ -3,15 +3,20 @@ import LanguageSelect from "@/app/components/LanguageSelect";
 import DarkModeSwitch from "@/app/components/darkModeSwitch/DarkModeSwitch";
 import React from "react";
 
-const Navbar = () => {
+interface NavbarProps {
+  title: string;
+  children: React.ReactNode;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ title, children }) => {
   return (
-    <div className="w-full border-themeGrayLight border-[1px] px-4 xl:px-10">
-      <div className="flex flex-row relative items-center justify-between  py-5">
-        <h1 className="text-xl xl:text-3xl text-gray-600 font-semibold">
-          Hi Meshari, I hope you have a nice day
+    <div className="w-full border-themeGrayLight border-[1px] px-4 xl:px-10 py-5">
+      <div className="flex flex-row relative items-center justify-between">
+        <h1 className="text-xl xl:text-3xl text-gray-600 font-semibold ">
+          {title}
         </h1>
         <div className="flex flex-row space-x-8">
-          <DateSelect />
+          {children}
           <DarkModeSwitch />
           <LanguageSelect />
         </div>

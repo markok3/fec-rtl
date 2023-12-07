@@ -3,12 +3,13 @@ import Image, { StaticImageData } from "next/image";
 import emailSVG from "@/public/images/svgs/inputSVGs/emailSVG.svg";
 
 type InputProps = {
-  value: string;
+  value?: string;
   placeholder?: string;
   label?: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   svgIcon?: React.ElementType;
   type?: string;
+  className?: string;
 };
 
 const Input: React.FC<InputProps> = ({
@@ -18,6 +19,7 @@ const Input: React.FC<InputProps> = ({
   placeholder,
   svgIcon: SvgIcon,
   type,
+  className,
 }) => {
   return (
     <div>
@@ -38,7 +40,7 @@ const Input: React.FC<InputProps> = ({
           onChange={onChange}
           type={type}
           className={`${SvgIcon ? "ps-10" : "ps-4 "} 
-          w-full h-14  border-[#401BFF] border-2 focus:border-[#401BFF] focus:outline-[#401BFF] focus:border-0 rounded-[8px]  text-gray-600`}
+         ${className} w-full h-14  border-[#401BFF] border-2 focus:border-[#401BFF] focus:outline-[#401BFF] focus:border-0 rounded-[8px]  text-gray-600`}
           placeholder={placeholder}
         />
       </div>

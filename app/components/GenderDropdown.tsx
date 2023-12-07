@@ -1,26 +1,27 @@
 import React, { useEffect, useRef, useState } from "react";
 import ArrowDown from "@/public/images/svgs/arrowDown.svg";
 
-type DateOption = {
-  date: string;
+type GenderOption = {
+  gender: string;
 };
 
-const dateOptions: DateOption[] = [
-  { date: "Today" },
-  { date: "Yesterday" },
-  { date: "Last 7 days" },
-  { date: "Last 30 days" },
-  { date: "This month" },
-  { date: "Last month" },
+const genderOptions: GenderOption[] = [
+  { gender: "Male" },
+  { gender: "Female" },
+  { gender: "Other" },
 ];
 
-const DateSelect = () => {
-  const [date, setDate] = useState<DateOption>({ date: "Today" });
+interface GenderDropdownProps {
+  className?: string;
+}
+
+const GenderDropdown: React.FC<GenderDropdownProps> = ({ className }) => {
+  const [gender, setgender] = useState<GenderOption>({ gender: "Male" });
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const handleOptionClick = (option: DateOption) => {
-    setDate(option);
+  const handleOptionClick = (option: GenderOption) => {
+    setgender(option);
     setIsOpen(false);
   };
 
@@ -47,11 +48,11 @@ const DateSelect = () => {
     >
       {/* DROPDOWN BUTTON */}
       <div
-        className="flex relative flex-row w-36 px-2 py-2 border rounded-md cursor-pointer gap-2 "
+        className={`flex relative flex-row w-36 px-2 py-2 border rounded-md cursor-pointer gap-2  ${className}`}
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="flex justify-between w-full">
-          <span>{date.date}</span>
+          <span>{gender.gender}</span>
           <ArrowDown />
         </div>
         {/* <Image src={arrowDown} alt="arrowDown" className=""></Image> */}
@@ -59,16 +60,16 @@ const DateSelect = () => {
 
       {/* DROPDOWN LIST */}
       {isOpen && (
-        <div className="mt-2 absolute w-36">
-          {dateOptions.map((option) => {
-            if (option.date !== date.date)
+        <div className={`mt-2 absolute w-36 ${className}`}>
+          {genderOptions.map((option) => {
+            if (option.gender !== gender.gender)
               return (
                 <div
-                  key={option.date}
+                  key={option.gender}
                   className="w-full flex items-center justify-center mt-1  py-2 border rounded-md cursor-pointer bg-white hover:bg-gray-100"
                   onClick={() => handleOptionClick(option)}
                 >
-                  <span>{option.date}</span>
+                  <span>{option.gender}</span>
                 </div>
               );
           })}
@@ -78,4 +79,4 @@ const DateSelect = () => {
   );
 };
 
-export default DateSelect;
+export default GenderDropdown;

@@ -17,7 +17,6 @@ export default function HomePageLayout({
         <body className=" flex flex-row w-full ">
           <SideBar />
           <div className="w-full overflow-auto max-h-screen">
-            <Navbar />
             <div>{children}</div>
           </div>
         </body>

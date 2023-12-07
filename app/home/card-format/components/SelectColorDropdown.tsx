@@ -1,26 +1,32 @@
 import React, { useEffect, useRef, useState } from "react";
 import ArrowDown from "@/public/images/svgs/arrowDown.svg";
 
-type DateOption = {
-  date: string;
+type ColorOption = {
+  color: string;
 };
 
-const dateOptions: DateOption[] = [
-  { date: "Today" },
-  { date: "Yesterday" },
-  { date: "Last 7 days" },
-  { date: "Last 30 days" },
-  { date: "This month" },
-  { date: "Last month" },
+const colorOptions: ColorOption[] = [
+  { color: "#1D2D50" },
+  { color: "#7F8C8D" },
+  { color: "#16A085" },
 ];
 
-const DateSelect = () => {
-  const [date, setDate] = useState<DateOption>({ date: "Today" });
+interface SelectColorDropdownProps {
+  className?: string;
+  setSelectedColor: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const SelectColorDropdown: React.FC<SelectColorDropdownProps> = ({
+  className,
+  setSelectedColor,
+}) => {
+  const [color, setcolor] = useState<ColorOption>({ color: "#1D2D50" });
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const handleOptionClick = (option: DateOption) => {
-    setDate(option);
+  const handleOptionClick = (option: ColorOption) => {
+    setcolor(option);
+    setSelectedColor(option.color);
     setIsOpen(false);
   };
 
@@ -47,11 +53,18 @@ const DateSelect = () => {
     >
       {/* DROPDOWN BUTTON */}
       <div
-        className="flex relative flex-row w-36 px-2 py-2 border rounded-md cursor-pointer gap-2 "
+        className={`flex relative flex-row w-36 px-2 py-2 border rounded-md cursor-pointer gap-2  ${className}`}
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="flex justify-between w-full">
-          <span>{date.date}</span>
+          <div
+            style={{
+              width: "3rem",
+              height: "2rem",
+              backgroundColor: color.color,
+            }}
+            className="rounded-md"
+          ></div>
           <ArrowDown />
         </div>
         {/* <Image src={arrowDown} alt="arrowDown" className=""></Image> */}
@@ -59,16 +72,23 @@ const DateSelect = () => {
 
       {/* DROPDOWN LIST */}
       {isOpen && (
-        <div className="mt-2 absolute w-36">
-          {dateOptions.map((option) => {
-            if (option.date !== date.date)
+        <div className={`mt-2 absolute w-36 ${className}`}>
+          {colorOptions.map((option) => {
+            if (option.color !== color.color)
               return (
                 <div
-                  key={option.date}
+                  key={option.color}
                   className="w-full flex items-center justify-center mt-1  py-2 border rounded-md cursor-pointer bg-white hover:bg-gray-100"
                   onClick={() => handleOptionClick(option)}
                 >
-                  <span>{option.date}</span>
+                  <div
+                    style={{
+                      width: "3rem",
+                      height: "2rem",
+                      backgroundColor: option.color,
+                    }}
+                    className="rounded-md"
+                  ></div>
                 </div>
               );
           })}
@@ -78,4 +98,4 @@ const DateSelect = () => {
   );
 };
 
-export default DateSelect;
+export default SelectColorDropdown;
