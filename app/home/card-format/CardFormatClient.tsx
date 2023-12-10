@@ -13,18 +13,19 @@ export type CardFormatType = {
   selectedColor: string | null;
 };
 const CardFormatClient = () => {
-  const [image, setImage] = useState<string | null>(null);
-
   const [cardFormat, setCardFormat] = useState<any>(null);
 
-  const clientType = "points";
+  // GET USER TYPE FROM API
+  const clientType = "stamps";
+  const cardHolderName = "Murat";
 
   console.log(cardFormat);
 
   return (
     <div className="">
+      {/* @ts-ignore */}
       <Navbar title="Card Format"></Navbar>
-      <div className="w-full flex flex-row flex-wrap">
+      <div className="w-full flex flex-row flex-wrap justify-center md:justify-start">
         <div className="p-5">
           <CreateCardFormatForm
             setCardFormat={setCardFormat}
@@ -32,7 +33,7 @@ const CardFormatClient = () => {
           />
         </div>
         <div className="p-5">
-          <CardPreview cardFormat={cardFormat} cardHolder="Murat" />
+          <CardPreview cardFormat={cardFormat} cardHolder={cardHolderName} />
         </div>
 
         <div className="flex flex-col"></div>

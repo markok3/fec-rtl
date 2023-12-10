@@ -22,7 +22,7 @@ const ButtonWithIcon: React.FC<ButtonProps> = ({
         className={`${className} bg-blue text-white rounded-md flex items-center gap-2`}
         onClick={onClick}
       >
-        {label}
+        <div className="hidden md:block">{label}</div>
         <Icon />
       </button>
     </div>

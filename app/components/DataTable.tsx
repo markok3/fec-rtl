@@ -35,52 +35,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
-const data: User[] = [
-  {
-    id: "m5gr84i9",
-    index: 1,
-    points: 316,
-    email: "ken99@yahoo.com",
-    name: "Ken",
-  },
-  {
-    id: "3u1reuv4",
-    index: 2,
-    points: 242,
-    email: "Abe45@gmail.com",
-    name: "Abe",
-  },
-  {
-    id: "derv1ws0",
-    index: 3,
-    points: 837,
-    email: "Monserrat44@gmail.com",
-    name: "Monserrat",
-  },
-  {
-    id: "5kma53ae",
-    index: 4,
-    points: 874,
-    email: "Silas22@gmail.com",
-    name: "Silas",
-  },
-  {
-    id: "bhqecj4p",
-    index: 5,
-    points: 721,
-    email: "carmella@hotmail.com",
-    name: "Carmella",
-  },
-];
-
-export type User = {
-  id: string;
-  index: number;
-  name: string;
-  points: number;
-  email?: string;
-};
+import { User } from "../apiMock/apiMock";
 
 export const columns: ColumnDef<User>[] = [
   {
@@ -124,7 +79,11 @@ export const columns: ColumnDef<User>[] = [
   },
 ];
 
-export function DataTable() {
+type DataTableProps = {
+  data: User[];
+};
+
+export function DataTable({ data }: DataTableProps) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []

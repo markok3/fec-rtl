@@ -12,6 +12,9 @@ import { IoEnterSharp } from "react-icons/io5";
 import { IoMdSettings } from "react-icons/io";
 import { IoMdHelpCircle } from "react-icons/io";
 import { BiLogIn } from "react-icons/bi";
+import useSideBarMenuModal from "@/app/hooks/useSideBarMenuModal";
+
+import { RxCross2 } from "react-icons/rx";
 
 const linksTopPart = [
   { href: "/home/dashboard", label: "Home", Icon: GoHomeFill },
@@ -29,9 +32,19 @@ const linksBottomPart = [
 
 const SideBar = () => {
   const pathname = usePathname();
+  const sideBarMenuModal = useSideBarMenuModal();
+  console.log(sideBarMenuModal.isOpen);
   console.log(pathname);
   return (
-    <div className="min-h-screen max-h-screen">
+    <div
+      className={`min-h-screen max-h-screen translate duration-300 z-50 ${
+        sideBarMenuModal.isOpen ? "-translate-x-0 " : "-translate-x-full"
+      } 
+    ${sideBarMenuModal.isOpen ? "opacity-100" : "opacity-0 hidden  md:flex"}  `}
+    >
+      <div className="p-4 text-blue md:hidden">
+        <RxCross2 size={26} onClick={sideBarMenuModal.onClose} />
+      </div>
       <div className="flex flex-col justify-between h-full py-4 px-2 border-r-themeGrayLight border-[1px]">
         <div className="flex flex-col space-y-2">
           {linksTopPart.map((link) => (

@@ -50,10 +50,10 @@ const LanguageSelect = () => {
   }, []);
 
   return (
-    <div className="relative z-50 " ref={dropdownRef}>
+    <div className=" relative z-20 " ref={dropdownRef}>
       {/* DROPDOWN BUTTON */}
       <div
-        className="flex relative flex-row px-3 py-2 border rounded-md cursor-pointer gap-2 "
+        className="flex relative flex-row px-3 py-2 border rounded-md cursor-pointer gap-2  "
         onClick={() => setIsOpen(!isOpen)}
       >
         <language.svgIcon className="w-[32px] h-[24px]" />
@@ -63,7 +63,7 @@ const LanguageSelect = () => {
 
       {/* DROPDOWN LIST */}
       {isOpen && (
-        <div className="mt-2 absolute  ">
+        <div className="mt-2 absolute block ">
           {languageOptions.map((option) => {
             if (option.label !== language.label)
               return (

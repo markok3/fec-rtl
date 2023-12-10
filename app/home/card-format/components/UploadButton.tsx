@@ -8,7 +8,7 @@ interface UploadButtonProps {
 
 const UploadButton: React.FC<UploadButtonProps> = ({ onUpload, id }) => {
   return (
-    <div className="flex flex-row w-full h-full text-themeGray items-center justify-center">
+    <div className="flex flex-row w-full h-full text-themeGray items-center justify-end md:justify-center">
       <input
         type="file"
         id={id}
@@ -20,7 +20,7 @@ const UploadButton: React.FC<UploadButtonProps> = ({ onUpload, id }) => {
         htmlFor={id}
         className="flex items-center justify-center text-3xl border-[2px] border-dashed border-themeGray rounded-3xl cursor-pointer"
       >
-        <MdOutlineFileUpload size={60} className="mx-16 my-5" />
+        <MdOutlineFileUpload size={60} className="mx-8 md:mx-16 my-5" />
       </label>
     </div>
   );

@@ -22,6 +22,18 @@ const CreatePageFormatForm: React.FC<CreatePageFormatFormProps> = ({
   const [selectedColor, setSelectedColor] = useState<string>("1D2D50");
   const [message, setMessage] = useState<string>("");
 
+  const handleSave = () => {
+    const stateObject = {
+      logo: logo,
+      image: image,
+      selectedColor: selectedColor,
+      message: message,
+    };
+
+    // MAKE API CALL TO SAVE PAGE FORMAT
+    console.log(stateObject);
+  };
+
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -58,10 +70,10 @@ const CreatePageFormatForm: React.FC<CreatePageFormatFormProps> = ({
 
   return (
     <div>
-      <div className="grid grid-cols-1 grid-rows-1 sm:grid-cols-2 sm:grid-rows-4 gap-y-10 ">
+      <div className="grid grid-cols-2 sm:grid-cols-2 sm:grid-rows-4 gap-y-10 ">
         <div className="">
-          <h2 className="text-2xl font-semibold text-blue">Logo</h2>
-          <p className="text-medium text-themeGray">
+          <h2 className="text-xl md:text-2xl font-semibold text-blue">Logo</h2>
+          <p className="text-sm mt-2 md:mt-0 md:text-medium text-themeGray">
             Your Business Logo Will <br /> Appear At The Top Of The Card
           </p>
         </div>
@@ -71,8 +83,8 @@ const CreatePageFormatForm: React.FC<CreatePageFormatFormProps> = ({
         </div>
 
         <div>
-          <h2 className="text-2xl font-semibold text-blue">Image</h2>
-          <p className="text-medium text-themeGray">
+          <h2 className="text-xl md:text-2xl font-semibold text-blue">Image</h2>
+          <p className="text-sm mt-2 md:mt-0 md:text-medium text-themeGray">
             An Image That Will Appear <br />
             Under Your Business Logo
           </p>
@@ -82,12 +94,12 @@ const CreatePageFormatForm: React.FC<CreatePageFormatFormProps> = ({
         </div>
 
         <div className="">
-          <h2 className="text-2xl font-semibold text-blue">Color</h2>
-          <p className="text-medium text-themeGray">
+          <h2 className="text-xl md:text-2xl font-semibold text-blue">Color</h2>
+          <p className="text-sm mt-2 md:mt-0 md:text-medium text-themeGray">
             Card Color for your business
           </p>
         </div>
-        <div className="flex justify-center ">
+        <div className="flex justify-end md:justify-center ">
           <SelectColorDropdown
             className="w-[100px] mt-2"
             setSelectedColor={setSelectedColor}
@@ -95,31 +107,34 @@ const CreatePageFormatForm: React.FC<CreatePageFormatFormProps> = ({
         </div>
 
         <div className="">
-          <h2 className="text-2xl font-semibold text-blue">Message</h2>
-          <p className="text-medium text-themeGray">
+          <h2 className="text-xl md:text-2xl font-semibold text-blue">
+            Message
+          </h2>
+          <p className="text-sm mt-2 md:mt-0 md:text-medium text-themeGray">
             A Message Appears On The Card Add Page
           </p>
         </div>
-        <div className="flex justify-center ">
+        <div className="flex justify-end md:justify-center ">
           <textarea
-            className="w-[200px] mt-2 border-themeGray border-2 rounded-xl px-2 py-1 text-themeGray"
+            className="w-[150px] md:w-[200px] mt-2 border-themeGray border-2 rounded-xl px-2 py-1 text-themeGray"
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Enter Your Message Here"
           ></textarea>
         </div>
       </div>
 
-      <div className="flex justify-center gap-2 mt-6">
+      <div className="flex justify-center gap-2 mt-8">
         <PrimaryButton
           label="
       Preview"
-          className="text-xl font-semibold w-1/2 py-2 mr-6"
+          className="text-xl font-semibold w-1/2 py-2"
           onClick={handlePreview}
         />
         <PrimaryButton
           label="
       Save"
-          className="text-xl font-semibold w-1/2 py-2 mr-6"
+          className="text-xl font-semibold w-1/2 py-2"
+          onClick={handleSave}
         />
       </div>
     </div>

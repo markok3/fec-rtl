@@ -6,6 +6,11 @@ import Input from "@/app/components/Input";
 
 const HelpPageClient = () => {
   const [message, setMessage] = React.useState("");
+  const handleSend = () => {
+    // TODO: Send message to API
+    console.log(message);
+  };
+
   return (
     <div>
       <Navbar title="Help Page" />
@@ -20,7 +25,7 @@ const HelpPageClient = () => {
           <PrimaryButton
             label="Send"
             className="w-20 h-10 mt-2 mb-5"
-            onClick={() => console.log(message)}
+            onClick={handleSend}
           />
         </div>
       </div>

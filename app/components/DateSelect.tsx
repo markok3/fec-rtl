@@ -9,12 +9,16 @@ const dateOptions: DateOption[] = [
   { date: "Today" },
   { date: "Yesterday" },
   { date: "Last 7 days" },
-  { date: "Last 30 days" },
-  { date: "This month" },
   { date: "Last month" },
+  { date: "none" },
 ];
 
-const DateSelect = () => {
+type DateSelectProps = {
+  className?: string;
+  onDateChange: (date: string) => void;
+};
+
+const DateSelect: React.FC<DateSelectProps> = ({ className, onDateChange }) => {
   const [date, setDate] = useState<DateOption>({ date: "Today" });
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -22,6 +26,7 @@ const DateSelect = () => {
   const handleOptionClick = (option: DateOption) => {
     setDate(option);
     setIsOpen(false);
+    onDateChange(option.date);
   };
 
   useEffect(() => {
@@ -47,7 +52,7 @@ const DateSelect = () => {
     >
       {/* DROPDOWN BUTTON */}
       <div
-        className="flex relative flex-row w-36 px-2 py-2 border rounded-md cursor-pointer gap-2 "
+        className={`${className} flex relative flex-row w-36 px-2 py-2 border rounded-md cursor-pointer gap-2 `}
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="flex justify-between w-full">

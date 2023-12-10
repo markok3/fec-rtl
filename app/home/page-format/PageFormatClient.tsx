@@ -15,8 +15,9 @@ const PageFormatClient = () => {
   const [pageFormat, setPageFormat] = useState<any>(null);
   return (
     <div className="">
+      {/* @ts-ignore */}
       <Navbar title="Page Format"></Navbar>
-      <div className="w-full flex flex-row flex-wrap">
+      <div className="w-full flex flex-row flex-wrap justify-center md:justify-start">
         <div className="p-5">
           <CreatePageFormatForm setPageFormat={setPageFormat} />
         </div>

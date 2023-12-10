@@ -8,21 +8,27 @@ type GenderOption = {
 const genderOptions: GenderOption[] = [
   { gender: "Male" },
   { gender: "Female" },
-  { gender: "Other" },
+  { gender: "none" },
 ];
 
 interface GenderDropdownProps {
   className?: string;
+  onGenderChange: (gender: string) => void;
 }
 
-const GenderDropdown: React.FC<GenderDropdownProps> = ({ className }) => {
-  const [gender, setgender] = useState<GenderOption>({ gender: "Male" });
+const GenderDropdown: React.FC<GenderDropdownProps> = ({
+  className,
+  onGenderChange,
+}) => {
+  const [gender, setgender] = useState<GenderOption>(genderOptions[0]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleOptionClick = (option: GenderOption) => {
+    console.log(option);
     setgender(option);
     setIsOpen(false);
+    onGenderChange(option.gender);
   };
 
   useEffect(() => {

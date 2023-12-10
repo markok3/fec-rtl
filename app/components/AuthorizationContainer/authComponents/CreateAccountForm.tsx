@@ -92,6 +92,7 @@ const CreateAccountForm: React.FC<CreateAccountFormProps> = ({ onNext }) => {
         {inputData.map((input) => (
           <Controller
             key={input.name}
+            // @ts-ignore
             name={input.name}
             control={control}
             defaultValue={input.value}

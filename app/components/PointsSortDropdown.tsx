@@ -8,14 +8,16 @@ type SortPoints = {
 const sortPointsOptions: SortPoints[] = [
   { sortPoints: "asc" },
   { sortPoints: "desc" },
+  { sortPoints: "none" },
 ];
 
 interface PointsSortPointsDropdownProps {
   className?: string;
+  onSortChange: (sortPoints: string) => void;
 }
-
 const PointsSortPointsDropdown: React.FC<PointsSortPointsDropdownProps> = ({
   className,
+  onSortChange,
 }) => {
   const [sortPoints, setsortPoints] = useState<SortPoints>({
     sortPoints: "asc",
@@ -26,6 +28,7 @@ const PointsSortPointsDropdown: React.FC<PointsSortPointsDropdownProps> = ({
   const handleOptionClick = (option: SortPoints) => {
     setsortPoints(option);
     setIsOpen(false);
+    onSortChange(option.sortPoints);
   };
 
   useEffect(() => {

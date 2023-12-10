@@ -1,30 +1,13 @@
 import React from "react";
 import InfoCard from "./InfoCard";
 
-const InfoCardList = () => {
-  const cardData = [
-    {
-      title: "Total Points",
-      subtitle: "This month",
-      value: "1,000",
-      change: "+100",
-    },
-    {
-      title: "Total Cards",
-      subtitle: "This month",
-      value: "500",
-      change: "+50",
-    },
-    {
-      title: "Total Visits",
-      subtitle: "This month",
-      value: "2,000",
-      change: "+200",
-    },
-  ];
+interface InfoCardListProps {
+  cardData: any[];
+}
 
+const InfoCardList: React.FC<InfoCardListProps> = ({ cardData }) => {
   return (
-    <div className="flex flex-row flex-wrap w-full p-5 justify-evenly ">
+    <div className="flex flex-row flex-wrap w-full p-5 justify-evenly gap-2 ">
       {cardData.map((card, index) => (
         <InfoCard
           key={index}

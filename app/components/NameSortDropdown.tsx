@@ -5,13 +5,21 @@ type NameSort = {
   sort: string;
 };
 
-const nameSortOptions: NameSort[] = [{ sort: "A-Z" }, { sort: "Z-A" }];
+const nameSortOptions: NameSort[] = [
+  { sort: "A-Z" },
+  { sort: "Z-A" },
+  { sort: "none" },
+];
 
 interface NameSortDropdownProps {
   className?: string;
+  onSortChange: (sortPoints: string) => void;
 }
 
-const NameSortDropdown: React.FC<NameSortDropdownProps> = ({ className }) => {
+const NameSortDropdown: React.FC<NameSortDropdownProps> = ({
+  className,
+  onSortChange,
+}) => {
   const [sort, setsort] = useState<NameSort>({ sort: "A-Z" });
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -19,6 +27,7 @@ const NameSortDropdown: React.FC<NameSortDropdownProps> = ({ className }) => {
   const handleOptionClick = (option: NameSort) => {
     setsort(option);
     setIsOpen(false);
+    onSortChange(option.sort);
   };
 
   useEffect(() => {
