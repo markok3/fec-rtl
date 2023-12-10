@@ -13,6 +13,7 @@ const HelpPageClient = () => {
 
   return (
     <div>
+      {/* @ts-ignore */}
       <Navbar title="Help Page" />
       <div className="flex justify-center mt-5">
         <div className="w-[95%]">

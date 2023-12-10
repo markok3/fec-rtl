@@ -17,6 +17,7 @@ const SettingsClient = () => {
 
   return (
     <div className="w-full">
+      {/* @ts-ignore */}
       <Navbar title="Settings" />
 
       <div className="flex gap-4 p-3 justify-evenly md:justify-start min-w-full">

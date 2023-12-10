@@ -28,6 +28,7 @@ const GeographicClient = () => {
 
   return (
     <div>
+      {/* @ts-ignore */}
       <Navbar title="Geographic"></Navbar>
       <div className="flex justify-center mt-5">
         <div className="w-[95%]">

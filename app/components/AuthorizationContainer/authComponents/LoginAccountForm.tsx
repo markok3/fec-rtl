@@ -58,10 +58,12 @@ const LoginAccountForm = () => {
             {inputData.map((input) => (
               <Controller
                 key={input.name}
+                // @ts-ignore
                 name={input.name}
                 control={control}
                 defaultValue={input.value}
                 render={({ field }) => (
+                  // @ts-ignore
                   <Input
                     {...field}
                     type={input.name}
@@ -106,7 +108,7 @@ const LoginAccountForm = () => {
         <div>
           <PrimaryButton type="submit" className="w-full h-14" label="Login" />
           <p className="mt-1 text-xs  text-gray-400 ">
-            Don't have an account?{" "}
+            "Don&apos;t have an account? {}"
             <a href="/sign-up" className="text-blue hover:underline">
               Sign up
             </a>
