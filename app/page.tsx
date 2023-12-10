@@ -1,11 +1,11 @@
-"use client";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import ClientOnly from "./components/ClientOnly";
+import HomeClient from "./HomeClient";
 
 export default function Home() {
-  const router = useRouter();
-  router.push("/home/dashboard");
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24"></main>
+    <ClientOnly>
+      <HomeClient />
+    </ClientOnly>
   );
 }

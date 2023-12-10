@@ -5,6 +5,7 @@ import LightThemeToggleSVG from "@/public/images/svgs/switch/lightThemeToggle.sv
 
 const DarkModeSwitch = () => {
   const [checked, setChecked] = useState(false);
+  // @ts-ignore
   const handleChange = (nextChecked) => {
     setChecked(nextChecked);
   };

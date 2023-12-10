@@ -108,7 +108,7 @@ const LoginAccountForm = () => {
         <div>
           <PrimaryButton type="submit" className="w-full h-14" label="Login" />
           <p className="mt-1 text-xs  text-gray-400 ">
-            "Don&apos;t have an account? {}"
+            Don&apos;t have an account? {}
             <a href="/sign-up" className="text-blue hover:underline">
               Sign up
             </a>

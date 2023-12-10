@@ -1,8 +1,7 @@
 import React from "react";
 import ClientOnly from "../components/ClientOnly";
 import LoginClient from "./LoginClient";
-
-export const Home = () => {
+const Home = () => {
   return (
     <ClientOnly>
       <LoginClient />

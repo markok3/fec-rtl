@@ -56,6 +56,7 @@ const LanguageSelect = () => {
         className="flex relative flex-row px-3 py-2 border rounded-md cursor-pointer gap-2  "
         onClick={() => setIsOpen(!isOpen)}
       >
+        {/* @ts-ignore */}
         <language.svgIcon className="w-[32px] h-[24px]" />
         <ArrowDown />
         {/* <Image src={arrowDown} alt="arrowDown" className=""></Image> */}
@@ -78,6 +79,7 @@ const LanguageSelect = () => {
                     width={32}
                     height={24}
                   ></Image> */}
+                  {/* @ts-ignore */}
                   <option.svgIcon className="w-[32px] h-[24px]" />
                 </div>
               );
