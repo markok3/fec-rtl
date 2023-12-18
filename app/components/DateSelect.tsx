@@ -10,7 +10,7 @@ const dateOptions: DateOption[] = [
   { date: "Yesterday" },
   { date: "Last 7 days" },
   { date: "Last month" },
-  { date: "none" },
+  { date: "All" },
 ];
 
 type DateSelectProps = {
@@ -19,7 +19,7 @@ type DateSelectProps = {
 };
 
 const DateSelect: React.FC<DateSelectProps> = ({ className, onDateChange }) => {
-  const [date, setDate] = useState<DateOption>({ date: "Today" });
+  const [date, setDate] = useState<DateOption>({ date: "All" });
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 

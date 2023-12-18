@@ -22,7 +22,7 @@ const GeographicClient = () => {
   console.log(message);
 
   const handleSave = () => {
-    // MAKE API CALL TO SAVE PAGE FORMAT AND IMPLEMENT YOUR OWN MAP API
+    // MAKE API CALL TO SAVE MESSAGE AND IMPLEMENT YOUR OWN MAP API
     console.log(message);
   };
 

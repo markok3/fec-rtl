@@ -15,13 +15,14 @@ import { BiLogIn } from "react-icons/bi";
 import useSideBarMenuModal from "@/app/hooks/useSideBarMenuModal";
 
 import { RxCross2 } from "react-icons/rx";
+import Logo from "@/app/components/Logo";
 
 const linksTopPart = [
   { href: "/home/dashboard", label: "Home", Icon: GoHomeFill },
   { href: "/home/customers", label: "Customers", Icon: IoMdContact },
   { href: "/home/card-format", label: "Card Format", Icon: FaCreditCard },
-  { href: "/home/page-format", label: "Page Format", Icon: FaMapLocationDot },
-  { href: "/home/geographic", label: "Geographic", Icon: IoEnterSharp },
+  { href: "/home/page-format", label: "Page Format", Icon: IoEnterSharp },
+  { href: "/home/geographic", label: "Geographic", Icon: FaMapLocationDot },
 ];
 
 const linksBottomPart = [
@@ -47,6 +48,7 @@ const SideBar = () => {
       </div>
       <div className="flex flex-col justify-between h-full py-4 px-2 border-r-themeGrayLight border-[1px]">
         <div className="flex flex-col space-y-2">
+          <Logo className="pr-16 pl-4 py-2 h-auto text-blue hidden md:block" />
           {linksTopPart.map((link) => (
             <Link
               key={link.href}
