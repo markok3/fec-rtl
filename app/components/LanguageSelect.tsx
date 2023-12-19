@@ -6,6 +6,8 @@ import ArrowDown from "@/public/images/svgs/arrowDown.svg";
 import britishFlag from "@/public/images/svgs/englishFlag.svg";
 import saudiFlag from "@/public/images/svgs/saudiFlag.svg";
 
+import useSelectedLanguage from "../hooks/useSelectedLanguage";
+
 type LanguageOption = {
   svgIcon: StaticImageData;
   label: string;
@@ -13,12 +15,12 @@ type LanguageOption = {
 
 const englishOption: LanguageOption = {
   svgIcon: britishFlag,
-  label: "EN",
+  label: "en",
 };
 
 const saudiArabiaOption: LanguageOption = {
   svgIcon: saudiFlag,
-  label: "AR",
+  label: "ar",
 };
 
 const languageOptions: LanguageOption[] = [englishOption, saudiArabiaOption];
@@ -26,14 +28,22 @@ const languageOptions: LanguageOption[] = [englishOption, saudiArabiaOption];
 const LanguageSelect = () => {
   const [language, setLanguage] = useState<LanguageOption>(englishOption);
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const { selectedLanguage, setSelectedLanguage } = useSelectedLanguage();
+
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleOptionClick = (option: LanguageOption) => {
     setLanguage(option);
     setIsOpen(false);
+    setSelectedLanguage(option.label);
   };
 
   useEffect(() => {
+    if (selectedLanguage === "ar") {
+      setLanguage(saudiArabiaOption);
+    }
+
     const handleClickOutside = (event: MouseEvent) => {
       if (
         dropdownRef.current &&

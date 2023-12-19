@@ -4,6 +4,13 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 import HomeSVG from "@/public/images/svgs/sidebar/home.svg";
+import CustomersSVG from "@/public/images/svgs/sidebar/customers.svg";
+import CardSVG from "@/public/images/svgs/sidebar/card.svg";
+import PageFormatSVG from "@/public/images/svgs/sidebar/pageFormat.svg";
+import GeographicSVG from "@/public/images/svgs/sidebar/geographic.svg";
+
+import SignOutSVG from "@/public/images/svgs/sidebar/signOut.svg";
+
 import { GoHomeFill } from "react-icons/go";
 import { IoMdContact } from "react-icons/io";
 import { FaCreditCard } from "react-icons/fa6";
@@ -18,17 +25,17 @@ import { RxCross2 } from "react-icons/rx";
 import Logo from "@/app/components/Logo";
 
 const linksTopPart = [
-  { href: "/home/dashboard", label: "Home", Icon: GoHomeFill },
-  { href: "/home/customers", label: "Customers", Icon: IoMdContact },
-  { href: "/home/card-format", label: "Card Format", Icon: FaCreditCard },
-  { href: "/home/page-format", label: "Page Format", Icon: IoEnterSharp },
-  { href: "/home/geographic", label: "Geographic", Icon: FaMapLocationDot },
+  { href: "/home/dashboard", label: "Home", Icon: HomeSVG },
+  { href: "/home/customers", label: "Customers", Icon: CustomersSVG },
+  { href: "/home/card-format", label: "Card Format", Icon: CardSVG },
+  { href: "/home/page-format", label: "Page Format", Icon: PageFormatSVG },
+  { href: "/home/geographic", label: "Geographic", Icon: GeographicSVG },
 ];
 
 const linksBottomPart = [
   { href: "/home/settings", label: "Settings", Icon: IoMdSettings },
   { href: "/home/help", label: "Help", Icon: IoMdHelpCircle },
-  { href: "/home/sign-out", label: "Sign out", Icon: BiLogIn },
+  { href: "/home/sign-out", label: "Sign out", Icon: SignOutSVG },
 ];
 
 const SideBar = () => {
@@ -57,11 +64,11 @@ const SideBar = () => {
                   ? "flex gap-2 bg-blue text-white px-4 py-4 rounded-md "
                   : "flex gap-2 bg-white text-themeGray px-4 py-4 rounded-md"
               }
-              items-center gap-3
+              items-center gap-3 
               `}
               href={link.href}
             >
-              <link.Icon size={28} />
+              <link.Icon width={26} height={26} />
               {link.label}
             </Link>
           ))}

@@ -64,7 +64,7 @@ const CustomersClient = () => {
         <ButtonWithIcon
           label="Export"
           Icon={IoExitOutline}
-          className="px-4 py-2 w-36 flex justify-center"
+          className="px-4 py-2 w-36 flex justify-center mx-4"
           onClick={() => exportDataToPDF(sortedData)}
         />
         <PointsSortPointsDropdown
