@@ -12,6 +12,7 @@ import { User, userData } from "@/app/apiMock/apiMock";
 // GET DATA FROM API
 import { cardData } from "@/app/apiMock/apiMock";
 import { applyDateFilter } from "@/app/utils/filterUtils";
+import { FormattedMessage } from "react-intl";
 
 const DashboardClient = () => {
   const [sortedData, setSortedData] = useState<User[]>([]);

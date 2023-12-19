@@ -27,7 +27,7 @@ const AuthorizationRightPanel: React.FC<AuthorizationRightPanelProps> = ({
     <div className="min-h-screen ">
       <div>
         <div className="min-h-screen  ">
-          <div className="flex flex-col gap-[180px] p-6">
+          <div className="flex flex-col gap-[110px] p-4">
             <div className="flex justify-end">
               <LanguageSelect />
             </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-
+import { useIntl } from "react-intl"; // Import useIntl
 import emailSVG from "@/public/images/svgs/inputSVGs/emailSVG.svg";
 import lockSVG from "@/public/images/svgs/inputSVGs/lockSVGs.svg";
 import PrimaryButton from "../../buttons/PrimaryButton";
@@ -17,17 +17,17 @@ const inputData: InputProps[] = [
   {
     name: "email",
     value: "",
-    placeholder: "Enter your email",
-    label: "Email",
-    onChange: (event) => {}, // replace with your actual onChange handler
+    placeholder: "login.emailPlaceholder",
+    label: "login.emailLabel",
+    onChange: (event) => {},
     svgIcon: emailSVG,
   },
   {
     name: "password",
     value: "",
-    placeholder: "Enter your password",
-    label: "Password",
-    onChange: (event) => {}, // replace with your actual onChange handler
+    placeholder: "login.passwordPlaceholder",
+    label: "login.passwordLabel",
+    onChange: (event) => {},
     svgIcon: lockSVG,
   },
 ];
@@ -40,15 +40,17 @@ const LoginAccountForm = () => {
   } = useForm<InputsLogin>();
 
   const [formData, setFormData] = useState<InputsLogin>();
+  const intl = useIntl(); // Get the intl object
 
   const onSubmit: SubmitHandler<InputsLogin> = (data) => {
-    console.log(data);
-    setFormData(data);
+    console.log(data); // handle login logic here
   };
 
   return (
     <div className="flex flex-col items-center">
-      <h2 className="text-blue text-3xl font-bold">Create New Account</h2>
+      <h2 className="text-blue text-3xl font-bold">
+        {intl.formatMessage({ id: "login.header" })}
+      </h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-[75%] space-y-5 mt-10"
@@ -62,14 +64,23 @@ const LoginAccountForm = () => {
                 name={input.name}
                 control={control}
                 defaultValue={input.value}
+                rules={{
+                  required: intl.formatMessage(
+                    {
+                      id: "validation.required",
+                    },
+                    { label: intl.formatMessage({ id: input.label }) }
+                  ),
+                }}
                 render={({ field }) => (
-                  // @ts-ignore
+                  //@ts-ignore
                   <Input
                     {...field}
                     type={input.name}
-                    placeholder={input.placeholder}
-                    label={input.label}
+                    placeholder={intl.formatMessage({ id: input.placeholder })}
+                    label={intl.formatMessage({ id: input.label })}
                     svgIcon={input.svgIcon}
+                    error={errors[input.name as keyof typeof errors]}
                   />
                 )}
               />
@@ -91,7 +102,7 @@ const LoginAccountForm = () => {
                         checked={value}
                       />
                       <label className="ml-1" htmlFor="checkboxId">
-                        Keep me logged in?{" "}
+                        {intl.formatMessage({ id: "login.checkboxLabel" })}
                       </label>
                     </div>
                   )}
@@ -99,18 +110,22 @@ const LoginAccountForm = () => {
               </div>
 
               <a href="" className="hover:underline hover:text-blue">
-                Forgot your password?
+                {intl.formatMessage({ id: "login.forgotPassword" })}
               </a>
             </div>
           </div>
         </div>
 
         <div>
-          <PrimaryButton type="submit" className="w-full h-14" label="Login" />
-          <p className="mt-1 text-xs  text-gray-400 ">
-            Don&apos;t have an account? {}
+          <PrimaryButton
+            type="submit"
+            className="w-full h-14"
+            label={intl.formatMessage({ id: "login.buttonLabel" })}
+          />
+          <p className="mt-1 text-xs text-gray-400 ">
+            {intl.formatMessage({ id: "login.noAccount" })}{" "}
             <a href="/sign-up" className="text-blue hover:underline">
-              Sign up
+              {intl.formatMessage({ id: "login.signupLink" })}
             </a>
           </p>
         </div>

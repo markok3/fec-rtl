@@ -44,12 +44,12 @@ const GeographicClient = () => {
             onClick={handleSave}
           />
 
-          <div className="">
+          <div className="z-10">
             <MapContainer
               center={position}
               zoom={13}
               scrollWheelZoom={false}
-              style={{ height: "60vh", width: "100%" }}
+              style={{ height: "60vh", width: "100%", zIndex: 0 }}
             >
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

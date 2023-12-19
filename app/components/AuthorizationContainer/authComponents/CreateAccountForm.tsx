@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import Input from "../../Input";
-import flags from "react-phone-number-input/flags";
+import { useIntl } from "react-intl"; // Import useIntl
 import PhoneInputWithCountry from "react-phone-number-input/react-hook-form";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
@@ -10,7 +10,6 @@ import "./phoneNumber.css";
 import emailSVG from "@/public/images/svgs/inputSVGs/emailSVG.svg";
 import lockSVG from "@/public/images/svgs/inputSVGs/lockSVGs.svg";
 import userSVG from "@/public/images/svgs/inputSVGs/userSVGs.svg";
-import { StaticImageData } from "next/image";
 import PrimaryButton from "../../buttons/PrimaryButton";
 
 type Inputs = {
@@ -34,25 +33,25 @@ const inputData: InputProps[] = [
   {
     name: "businessName",
     value: "",
-    placeholder: "Enter your business name",
-    label: "Business Name",
-    onChange: (event) => {}, // replace with your actual onChange handler
+    placeholder: "createAccount.businessNamePlaceholder",
+    label: "createAccount.businessNameLabel",
+    onChange: (event) => {},
     svgIcon: userSVG,
   },
   {
     name: "email",
     value: "",
-    placeholder: "Enter your email",
-    label: "Email",
-    onChange: (event) => {}, // replace with your actual onChange handler
+    placeholder: "createAccount.emailPlaceholder",
+    label: "createAccount.emailLabel",
+    onChange: (event) => {},
     svgIcon: emailSVG,
   },
   {
     name: "password",
     value: "",
-    placeholder: "Enter your password",
-    label: "Password",
-    onChange: (event) => {}, // replace with your actual onChange handler
+    placeholder: "createAccount.passwordPlaceholder",
+    label: "createAccount.passwordLabel",
+    onChange: (event) => {},
     svgIcon: lockSVG,
   },
 ];
@@ -68,6 +67,8 @@ const CreateAccountForm: React.FC<CreateAccountFormProps> = ({ onNext }) => {
     formState: { errors },
   } = useForm<Inputs>();
 
+  const intl = useIntl(); // Get the intl object
+
   const [formData, setFormData] = useState<Inputs>();
   const [phone, setPhone] = useState("");
 
@@ -78,13 +79,15 @@ const CreateAccountForm: React.FC<CreateAccountFormProps> = ({ onNext }) => {
     };
 
     setFormData(newData);
-    // use newData as required
-    console.log(formData);
+    console.log(formData); // handle register logic here if okay go to next step
+    onNext();
   };
 
   return (
     <div className="flex flex-col items-center">
-      <h2 className="text-blue text-3xl font-bold">Create New Account</h2>
+      <h2 className="text-blue text-3xl font-bold">
+        {intl.formatMessage({ id: "createAccount.header" })}
+      </h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-[75%] space-y-5 mt-10"
@@ -96,13 +99,22 @@ const CreateAccountForm: React.FC<CreateAccountFormProps> = ({ onNext }) => {
             name={input.name}
             control={control}
             defaultValue={input.value}
+            rules={{
+              required: intl.formatMessage(
+                {
+                  id: "validation.required",
+                },
+                { label: intl.formatMessage({ id: input.label }) }
+              ),
+            }}
             render={({ field }) => (
               <Input
                 {...field}
                 type={input.name}
-                placeholder={input.placeholder}
-                label={input.label}
+                placeholder={intl.formatMessage({ id: input.placeholder })}
+                label={intl.formatMessage({ id: input.label })}
                 svgIcon={input.svgIcon}
+                error={errors[input.name as keyof typeof errors]}
               />
             )}
           />
@@ -110,17 +122,19 @@ const CreateAccountForm: React.FC<CreateAccountFormProps> = ({ onNext }) => {
         {/* Phone Input */}
         <div className="relative">
           <p className="absolute -top-[11px] left-10  bg-[white] rounded-sm px-1 text-center text-[#401BFF] text-sm font-medium z-40">
-            Mobile Number
+            {intl.formatMessage({ id: "createAccount.mobileNumber" })}
           </p>
           <PhoneInput
             className="border-2 border-[#401BFF] rounded-[8px] w-full h-14"
             defaultCountry="ua"
             value={phone}
-            placeholder="Enter Your Phone Here"
+            placeholder={intl.formatMessage({
+              id: "createAccount.phonePlaceholder",
+            })}
             onChange={(phone) => setPhone(phone)}
           />
           <p className="mt-2 text-xs text-center text-gray-400 ">
-            Your registration means that you agree to the terms and conditions.
+            {intl.formatMessage({ id: "createAccount.termsAndConditions" })}
           </p>
         </div>
 
@@ -128,13 +142,12 @@ const CreateAccountForm: React.FC<CreateAccountFormProps> = ({ onNext }) => {
           <PrimaryButton
             type="submit"
             className="w-full h-14"
-            label="Sign up"
-            onClick={() => onNext()}
+            label={intl.formatMessage({ id: "createAccount.signUpLabel" })}
           />
-          <p className="mt-1 text-xs  text-gray-400 ">
-            Already have an account?{" "}
+          <p className="mt-1 text-xs text-gray-400 ">
+            {intl.formatMessage({ id: "createAccount.alreadyHaveAccount" })}{" "}
             <a href="/login" className="text-blue hover:underline">
-              Sign in
+              {intl.formatMessage({ id: "createAccount.signInLabel" })}
             </a>
           </p>
         </div>

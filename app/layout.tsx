@@ -9,7 +9,11 @@ import RedeemCustomerRewardsModal from "./components/modals/RedeemCustomerReward
 import ShareYourPageModal from "./components/modals/ShareYourPageModal";
 import RecordCustomerPointsAndRewardsModal from "./components/modals/RecordCustomerPointsAndRewardsModal";
 import useSelectedLanguage from "./hooks/useSelectedLanguage";
+import { IntlProvider, FormattedMessage } from "react-intl";
 import { useEffect } from "react";
+
+import en from "@/app/lang/en.json";
+import ar from "@/app/lang/ar.json";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,23 +23,31 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const selectedLanguage = useSelectedLanguage();
+
   useEffect(() => {
     document.documentElement.lang = selectedLanguage.selectedLanguage;
     document.documentElement.dir =
       selectedLanguage.selectedLanguage === "ar" ? "rtl" : "ltr";
   }, [selectedLanguage.selectedLanguage]);
+
   return (
-    <html
-      lang={selectedLanguage.selectedLanguage}
-      dir={selectedLanguage.selectedLanguage === "ar" ? "rtl" : "ltr"}
+    <IntlProvider
+      locale={selectedLanguage.selectedLanguage}
+      defaultLocale="en"
+      messages={selectedLanguage.selectedLanguage === "ar" ? ar : en}
     >
-      <ClientOnly>
-        <CreateCustomerModal />
-        <RecordCustomerPointsAndRewardsModal />
-        <RedeemCustomerRewardsModal />
-        <ShareYourPageModal />
-      </ClientOnly>
-      <body className={inter.className}>{children}</body>
-    </html>
+      <html
+        lang={selectedLanguage.selectedLanguage}
+        dir={selectedLanguage.selectedLanguage}
+      >
+        <ClientOnly>
+          <CreateCustomerModal />
+          <RecordCustomerPointsAndRewardsModal />
+          <RedeemCustomerRewardsModal />
+          <ShareYourPageModal />
+        </ClientOnly>
+        <body className={inter.className}>{children}</body>
+      </html>
+    </IntlProvider>
   );
 }

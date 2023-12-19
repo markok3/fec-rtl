@@ -8,6 +8,7 @@ import LoginAccountForm from "./authComponents/LoginAccountForm";
 import CreateAccountForm from "./authComponents/CreateAccountForm";
 import ChooseMethodForm from "./authComponents/ChooseMethodForm";
 import Subscription from "./authComponents/Subscription";
+import { FormattedMessage, useIntl } from "react-intl";
 
 enum STEPS {
   SIGN_UP = 0,
@@ -16,6 +17,8 @@ enum STEPS {
 }
 
 const AuthorizationContainer = () => {
+  const intl = useIntl();
+
   const params = usePathname();
   const paramsWithoutSlash = params.substring(1);
 
@@ -26,7 +29,6 @@ const AuthorizationContainer = () => {
   };
 
   const onNext = () => {
-    console.log("executes");
     setStep((value) => value + 1);
   };
   console.log(params);
@@ -36,8 +38,12 @@ const AuthorizationContainer = () => {
       <div className="grid md:grid-cols-2">
         <div className="hidden md:block">
           <AuthorizationLeftPanel
-            headerText="Login!"
-            paragraphText="Log in to your account or sign up to get started"
+            headerText={intl.formatMessage({
+              id: "authorization.login.header",
+            })}
+            paragraphText={intl.formatMessage({
+              id: "authorization.login.paragraph",
+            })}
           />
         </div>
         <div>
@@ -51,8 +57,10 @@ const AuthorizationContainer = () => {
     <div className="grid md:grid-cols-2">
       <div className="hidden md:block">
         <AuthorizationLeftPanel
-          headerText="Join Today!"
-          paragraphText="Create Your Account"
+          headerText={intl.formatMessage({ id: "authorization.signup.header" })}
+          paragraphText={intl.formatMessage({
+            id: "authorization.signup.paragraph",
+          })}
         />
       </div>
       <div>
@@ -68,8 +76,12 @@ const AuthorizationContainer = () => {
       <div className="grid md:grid-cols-2">
         <div className="hidden md:block">
           <AuthorizationLeftPanel
-            headerText=""
-            paragraphText="You Must Choose The Method Of Calculating Points That Is Appropriate For Your Business"
+            headerText={intl.formatMessage({
+              id: "authorization.chooseMethod.header",
+            })}
+            paragraphText={intl.formatMessage({
+              id: "authorization.chooseMethod.paragraph",
+            })}
           />
         </div>
         <div>
@@ -86,8 +98,12 @@ const AuthorizationContainer = () => {
       <div className="grid md:grid-cols-2">
         <div className="hidden md:block">
           <AuthorizationLeftPanel
-            headerText="Try For Free"
-            paragraphText="We Don’t Have many packages. Just one package that has all features. you can try the platform."
+            headerText={intl.formatMessage({
+              id: "authorization.tryForFree.header",
+            })}
+            paragraphText={intl.formatMessage({
+              id: "authorization.tryForFree.paragraph",
+            })}
           />
         </div>
         <div>
