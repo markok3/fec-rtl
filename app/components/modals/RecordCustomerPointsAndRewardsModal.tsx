@@ -82,6 +82,7 @@ const RecordCustomerPointsAndRewardsModal = () => {
   );
 
   if (step === STEPS.ADD_REWARD) {
+    // @ts-ignore
     if (userType === "points") {
       bodyContent = (
         <div className="flex flex-col justify-center items-center gap-8">
