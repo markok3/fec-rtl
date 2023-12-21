@@ -40,7 +40,6 @@ export function DataTable({ data }: DataTableProps) {
       size: 50,
       maxSize: 50,
       header: () => {
-        const intl = useIntl();
         return (
           <div className="flex w-full h-full items-center justify-center border-r-2">
             {intl.formatMessage({ id: "hash" })}
@@ -52,7 +51,6 @@ export function DataTable({ data }: DataTableProps) {
       size: 150,
       accessorKey: "name",
       header: ({ column }) => {
-        const intl = useIntl();
         return (
           <div className="flex w-full h-full items-center border-r-2 px-4 text-left">
             <span className="">
@@ -70,7 +68,6 @@ export function DataTable({ data }: DataTableProps) {
     {
       accessorKey: "points",
       header: () => {
-        const intl = useIntl();
         return (
           <div className="flex w-full h-full items-center  border-r-2 px-4 text-left">
             {intl.formatMessage({ id: "dataTable.points" })}
@@ -78,7 +75,6 @@ export function DataTable({ data }: DataTableProps) {
         );
       },
       cell: ({ row }) => {
-        const intl = useIntl();
         const points = parseFloat(row.getValue("points"));
         return (
           <div className="flex w-full h-full items-center text-left text-blue font-semibold">
