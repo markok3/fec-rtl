@@ -3,6 +3,7 @@ import UploadButton from "./UploadButton";
 import PointsCalculatorButton from "./PointsCalculatorButtons";
 import SelectColorDropdown from "./SelectColorDropdown";
 import PrimaryButton from "@/app/components/buttons/PrimaryButton";
+import { useIntl } from "react-intl";
 
 interface CreateCardFormatFormProps {
   setCardFormat: React.Dispatch<
@@ -21,6 +22,8 @@ const CreateCardFormatForm: React.FC<CreateCardFormatFormProps> = ({
   setCardFormat,
   clientType,
 }) => {
+  const intl = useIntl();
+
   const [logo, setLogo] = useState<string | null>(null);
   const [image, setImage] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string>("1D2D50");
@@ -87,9 +90,11 @@ const CreateCardFormatForm: React.FC<CreateCardFormatFormProps> = ({
     <div>
       <div className="grid grid-cols-2  sm:grid-cols-2 sm:grid-rows-4 gap-y-10">
         <div className="">
-          <h2 className="text-xl md:text-2xl font-semibold text-blue">Logo</h2>
-          <p className="text-sm mt-2 md:mt-0 md:text-medium text-themeGray">
-            Your Business Logo Will <br /> Appear At The Top Of The Card
+          <h2 className="text-xl md:text-2xl font-semibold text-blue">
+            {intl.formatMessage({ id: "cardformat.form.logo" })}
+          </h2>
+          <p className="text-sm mt-2 md:mt-0 md:text-medium text-themeGray max-w-[250px]">
+            {intl.formatMessage({ id: "cardformat.form.logoDescription" })}
           </p>
         </div>
 
@@ -98,10 +103,11 @@ const CreateCardFormatForm: React.FC<CreateCardFormatFormProps> = ({
         </div>
 
         <div>
-          <h2 className="text-xl md:text-2xl font-semibold text-blue">Image</h2>
-          <p className="text-sm md:text-medium text-themeGray">
-            An Image That Will Appear <br />
-            Under Your Business Logo
+          <h2 className="text-xl md:text-2xl font-semibold text-blue">
+            {intl.formatMessage({ id: "cardformat.form.image" })}
+          </h2>
+          <p className="text-sm md:text-medium text-themeGray max-w-[250px]">
+            {intl.formatMessage({ id: "cardformat.form.imageDescription" })}
           </p>
         </div>
         <div className="flex just-center ">
@@ -112,26 +118,28 @@ const CreateCardFormatForm: React.FC<CreateCardFormatFormProps> = ({
           <>
             <div>
               <h2 className="text-xl md:text-2xl font-semibold text-blue">
-                Stamps Template
+                {intl.formatMessage({ id: "cardformat.form.stampsTemplate" })}
               </h2>
-              <p className="text-sm md:text-medium text-themeGray">
-                Select The Template <br />
-                That Suits You From Available Templates
+              <p className="text-sm md:text-medium text-themeGray max-w-[250px]">
+                {intl.formatMessage({
+                  id: "cardformat.form.stampsTemplateDescription",
+                })}
               </p>
             </div>
             <div className="flex justify-end md:justify-center">
               <span className="text-2xl font-bold text-themeGray mt-2 cursor-pointer">
-                Choose
+                {intl.formatMessage({ id: "cardformat.form.choose" })}
               </span>
             </div>
 
             <div>
               <h2 className="text-xl md:text-2xl font-semibold text-blue">
-                Total Stamps
+                {intl.formatMessage({ id: "cardformat.form.totalStamps" })}
               </h2>
-              <p className="text-sm md:text-medium text-themeGray">
-                Choose The Number Of <br />
-                Stamps For Reward
+              <p className="text-sm md:text-medium text-themeGray max-w-[250px]">
+                {intl.formatMessage({
+                  id: "cardformat.form.totalStampsDescription",
+                })}
               </p>
             </div>
             <div className="flex justify-end md:justify-center">
@@ -142,10 +150,12 @@ const CreateCardFormatForm: React.FC<CreateCardFormatFormProps> = ({
           <>
             <div>
               <h2 className="text-xl md:text-2xl font-semibold text-blue">
-                Points Calculator
+                {intl.formatMessage({ id: "cardformat.form.pointsCalculator" })}
               </h2>
               <p className="text-sm md:text-medium text-themeGray">
-                For Each Riyal, How Many Points Are
+                {intl.formatMessage({
+                  id: "cardformat.form.pointsCalculatorDescription",
+                })}
               </p>
             </div>
             <div className="flex justify-end md:justify-center ">
@@ -155,9 +165,11 @@ const CreateCardFormatForm: React.FC<CreateCardFormatFormProps> = ({
         )}
 
         <div className="">
-          <h2 className="text-xl md:text-2xl font-semibold text-blue">Color</h2>
+          <h2 className="text-xl md:text-2xl font-semibold text-blue">
+            {intl.formatMessage({ id: "cardformat.form.color" })}
+          </h2>
           <p className="text-sm md:text-medium text-themeGray">
-            Card Color for your business
+            {intl.formatMessage({ id: "cardformat.form.colorDescription" })}
           </p>
         </div>
         <div className="flex justify-end md:justify-center ">
@@ -169,14 +181,12 @@ const CreateCardFormatForm: React.FC<CreateCardFormatFormProps> = ({
       </div>
       <div className="flex justify-center gap-2 mt-6">
         <PrimaryButton
-          label="
-      Preview"
+          label={intl.formatMessage({ id: "cardformat.form.previewButton" })}
           className="text-xl font-semibold w-1/2 py-2 "
           onClick={handlePreview}
         />
         <PrimaryButton
-          label="
-      Save"
+          label={intl.formatMessage({ id: "cardformat.form.saveButton" })}
           className="text-xl font-semibold w-1/2 py-2 "
           onClick={handleSave}
         />

@@ -1,24 +1,3 @@
-export const cardData = [
-  {
-    title: "Total Points",
-    subtitle: "This month",
-    value: "1,000",
-    change: "+100",
-  },
-  {
-    title: "Total Cards",
-    subtitle: "This month",
-    value: "500",
-    change: "+50",
-  },
-  {
-    title: "Total Visits",
-    subtitle: "This month",
-    value: "2,000",
-    change: "+200",
-  },
-];
-
 export type User = {
   id: string;
   index: number;

@@ -10,12 +10,32 @@ import DarkModeSwitch from "@/app/components/darkModeSwitch/DarkModeSwitch";
 import LanguageSelect from "@/app/components/LanguageSelect";
 import { User, userData } from "@/app/apiMock/apiMock";
 // GET DATA FROM API
-import { cardData } from "@/app/apiMock/apiMock";
 import { applyDateFilter } from "@/app/utils/filterUtils";
 import { FormattedMessage, useIntl } from "react-intl";
 
 const DashboardClient = () => {
   const intl = useIntl();
+
+  const cardData = [
+    {
+      title: "Total Points",
+      subtitle: "This month",
+      value: "1,000",
+      change: "+100",
+    },
+    {
+      title: "Total Cards",
+      subtitle: "This month",
+      value: "500",
+      change: "+50",
+    },
+    {
+      title: "Total Visits",
+      subtitle: "This month",
+      value: "2,000",
+      change: "+200",
+    },
+  ];
 
   const userName = "Meshari";
 

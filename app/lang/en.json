@@ -36,6 +36,8 @@
   "createAccount.signInLabel": "Sign in",
 
   "dashboard.navbar.header": "Hi, {name}, I hope you have a nice day!",
+  "customers.navbar.header": "Customers",
+  "cardformat.navbar.header": "Card Format",
 
   "dataTable.name": "Name",
   "dataTable.points": "Points",
@@ -55,5 +57,56 @@
   "customerActions.shareYourPage": "Share your page",
   "customerActions.addCustomer": "Add customer",
   "customerActions.record": "Record",
-  "customerActions.redeem": "Redeem"
+  "customerActions.redeem": "Redeem",
+
+  "cardformat.form.logo": "Logo",
+  "cardformat.form.logoDescription": "Your Business Logo Will Appear At The Top Of The Card",
+  "cardformat.form.image": "Image",
+  "cardformat.form.imageDescription": "An Image That Will Appear Under Your Business Logo",
+  "cardformat.form.stampsTemplate": "Stamps Template",
+  "cardformat.form.stampsTemplateDescription": "Select The Template That Suits You From Available Templates",
+  "cardformat.form.totalStamps": "Total Stamps",
+  "cardformat.form.totalStampsDescription": "Choose The Number Of Stamps For Reward",
+  "cardformat.form.pointsCalculator": "Points Calculator",
+  "cardformat.form.pointsCalculatorDescription": "For Each Riyal, How Many Points Are",
+  "cardformat.form.color": "Color",
+  "cardformat.form.colorDescription": "Card Color for your business",
+  "cardformat.form.previewButton": "Preview",
+  "cardformat.form.saveButton": "Save",
+  "cardformat.form.choose": "Choose",
+  "cardformat.preview.points": "Points",
+  "cardformat.preview.cardHolder": "Card Holder",
+
+  "pageformat.form.logo": "Logo",
+  "pageformat.form.logoDescription": "Your Business Logo Will Appear At The Top Of The Page",
+  "pageformat.form.image": "Image",
+  "pageformat.form.imageDescription": "An Image That Will Appear Under Your Business Logo",
+  "pageformat.form.color": "Color",
+  "pageformat.form.colorDescription": "Page Color for your business",
+  "pageformat.form.message": "Message",
+  "pageformat.form.messageDescription": "A Message Appears On The Page",
+  "pageformat.form.previewButton": "Preview",
+  "pageformat.form.saveButton": "Save",
+
+  "pagepreview.message.default": "Write Here A Welcome Text That appears For your customers to download the card",
+
+  "geographic.title": "Geographic",
+  "geographic.message.label": "Message",
+  "geographic.message.placeholder": "Write Your Message Here...",
+  "geographic.saveButton.label": "Save",
+
+  "settings.title": "Settings",
+  "settings.userNameLabel": "User Name",
+  "settings.userNamePlaceholder": "Write Your User Name Here...",
+  "settings.businessNameLabel": "Business Name",
+  "settings.businessNamePlaceholder": "Write Your Business Name Here...",
+  "settings.changePassword": "Change Password",
+  "settings.changeEmail": "Change Email",
+  "settings.changeMobileNumber": "Change Mobile Number",
+  "settings.saveButton": "Save",
+
+  "helppage.title": "Help Page",
+  "helppage.createTicketLabel": "Create A Ticket",
+  "helppage.createTicketPlaceholder": "Type The Problem Or Support You Need So That We Can Provide Assistance.",
+  "helppage.sendButton": "Send"
 }

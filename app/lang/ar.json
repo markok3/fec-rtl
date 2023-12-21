@@ -36,6 +36,8 @@
   "createAccount.signInLabel": "تسجيل الدخول",
 
   "dashboard.navbar.header": "مرحبًا، {name}، أتمنى لك يومًا جميلاً!",
+  "cardformat.navbar.header": "تنسيق البطاقة",
+  "customers.navbar.header": "العملاء",
 
   "dataTable.name": "الاسم",
   "dataTable.points": "النقاط",
@@ -55,5 +57,56 @@
   "customerActions.shareYourPage": "شارك صفحتك",
   "customerActions.addCustomer": "إضافة عميل",
   "customerActions.record": "تسجيل",
-  "customerActions.redeem": "استرداد"
+  "customerActions.redeem": "استرداد",
+
+  "cardformat.form.logo": "شعار",
+  "cardformat.form.logoDescription": "سيظهر شعار عملك في أعلى البطاقة",
+  "cardformat.form.image": "صورة",
+  "cardformat.form.imageDescription": "صورة ستظهر تحت شعار عملك",
+  "cardformat.form.stampsTemplate": "قالب الطوابع",
+  "cardformat.form.stampsTemplateDescription": "اختر القالب الذي يناسبك من بين القوالب المتاحة",
+  "cardformat.form.totalStamps": "إجمالي الطوابع",
+  "cardformat.form.totalStampsDescription": "اختر عدد الطوابع للمكافأة",
+  "cardformat.form.pointsCalculator": "آلة حاسبة النقاط",
+  "cardformat.form.pointsCalculatorDescription": "لكل ريال، كم نقطة",
+  "cardformat.form.color": "لون",
+  "cardformat.form.colorDescription": "لون البطاقة لعملك",
+  "cardformat.form.previewButton": "معاينة",
+  "cardformat.form.saveButton": "حفظ",
+  "cardformat.form.choose": "اختر",
+  "cardformat.preview.points": "النقاط",
+  "cardformat.preview.cardHolder": "حامل البطاقة",
+
+  "pageformat.form.logo": "شعار",
+  "pageformat.form.logoDescription": "سيظهر شعار عملك في أعلى الصفحة",
+  "pageformat.form.image": "صورة",
+  "pageformat.form.imageDescription": "صورة ستظهر تحت شعار عملك",
+  "pageformat.form.color": "لون",
+  "pageformat.form.colorDescription": "لون الصفحة لعملك",
+  "pageformat.form.message": "رسالة",
+  "pageformat.form.messageDescription": "تظهر رسالة على الصفحة",
+  "pageformat.form.previewButton": "معاينة",
+  "pageformat.form.saveButton": "حفظ",
+
+  "pagepreview.message.default": "اكتب هنا نص ترحيبي يظهر لعملائك لتحميل البطاقة",
+
+  "geographic.title": "جغرافي",
+  "geographic.message.label": "الرسالة",
+  "geographic.message.placeholder": "اكتب رسالتك هنا...",
+  "geographic.saveButton.label": "حفظ",
+
+  "settings.title": "الإعدادات",
+  "settings.userNameLabel": "اسم المستخدم",
+  "settings.userNamePlaceholder": "اكتب اسم المستخدم الخاص بك هنا...",
+  "settings.businessNameLabel": "اسم العمل",
+  "settings.businessNamePlaceholder": "اكتب اسم عملك هنا...",
+  "settings.changePassword": "تغيير كلمة المرور",
+  "settings.changeEmail": "تغيير البريد الإلكتروني",
+  "settings.changeMobileNumber": "تغيير رقم الجوال",
+  "settings.saveButton": "حفظ",
+
+  "helppage.title": "صفحة المساعدة",
+  "helppage.createTicketLabel": "إنشاء تذكرة",
+  "helppage.createTicketPlaceholder": "اكتب المشكلة أو الدعم الذي تحتاجه حتى نتمكن من تقديم المساعدة.",
+  "helppage.sendButton": "إرسال"
 }

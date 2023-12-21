@@ -22,6 +22,7 @@ import {
   applyNameSort,
   applyPointsSort,
 } from "@/app/utils/filterUtils";
+import { useIntl } from "react-intl";
 
 const CustomersClient = () => {
   const [sortedData, setSortedData] = useState<User[]>([]);
@@ -58,9 +59,10 @@ const CustomersClient = () => {
     applyFilters(updatedSortedData);
   };
 
+  const intl = useIntl();
   return (
     <div className="">
-      <Navbar title="Customers">
+      <Navbar title={intl.formatMessage({ id: "customers.navbar.header" })}>
         <ButtonWithIcon
           label="Export"
           Icon={IoExitOutline}
