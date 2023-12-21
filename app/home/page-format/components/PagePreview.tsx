@@ -4,12 +4,14 @@ import Logo from "@/app/components/Logo";
 import Background from "@/public/images/background.jpg";
 import Image from "next/image";
 import AppleWalletSVG from "@/public/images/svgs/pageFormatSVGs/appleWallet.svg";
+import { useIntl } from "react-intl";
 
 interface PagePreviewProps {
   pageFormat?: PageFormatType;
 }
 
 const PagePreview: React.FC<PagePreviewProps> = ({ pageFormat }) => {
+  const intl = useIntl();
   return (
     <div
       className={`max-w-[380px] text-white rounded-xl bg-blue`}
@@ -39,7 +41,7 @@ const PagePreview: React.FC<PagePreviewProps> = ({ pageFormat }) => {
           <p className="py-5">
             {pageFormat?.message
               ? pageFormat.message
-              : "Write Here A Welcome Text That appears  For your customers to download the card"}
+              : intl.formatMessage({ id: "pagepreview.message.default" })}
           </p>
 
           <AppleWalletSVG className="my-8" />

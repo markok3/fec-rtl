@@ -9,7 +9,7 @@ import { IoIosArrowBack } from "react-icons/io";
 
 interface NavbarProps {
   title?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ title, children }) => {

@@ -8,18 +8,18 @@ import "leaflet/dist/leaflet.css";
 import { LatLngTuple } from "leaflet";
 import { Icon } from "leaflet";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import { useIntl } from "react-intl";
 
 const GeographicClient = () => {
+  const intl = useIntl();
   const [message, setMessage] = React.useState("");
   const position: LatLngTuple = [51.505, -0.09];
   const customIcon = new Icon({
     iconUrl: FaMapMarkerAlt,
-    iconSize: [38, 95], // size of the icon
-    iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
-    popupAnchor: [-3, -76], // point from which the popup should open relative to the iconAnchor
+    iconSize: [38, 95],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76],
   });
-
-  console.log(message);
 
   const handleSave = () => {
     // MAKE API CALL TO SAVE MESSAGE AND IMPLEMENT YOUR OWN MAP API
@@ -29,17 +29,19 @@ const GeographicClient = () => {
   return (
     <div>
       {/* @ts-ignore */}
-      <Navbar title="Geographic"></Navbar>
+      <Navbar title={intl.formatMessage({ id: "geographic.title" })}></Navbar>
       <div className="flex justify-center mt-5">
         <div className="w-[95%]">
           <Input
-            label="Message"
-            placeholder="Write Your Message Here..."
+            label={intl.formatMessage({ id: "geographic.message.label" })}
+            placeholder={intl.formatMessage({
+              id: "geographic.message.placeholder",
+            })}
             className="h-32"
             onChange={(event) => setMessage(event.target.value)}
           />
           <PrimaryButton
-            label="Save"
+            label={intl.formatMessage({ id: "geographic.saveButton.label" })}
             className="w-20 h-10 mt-2 mb-5"
             onClick={handleSave}
           />

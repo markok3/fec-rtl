@@ -6,6 +6,7 @@ import HomePageLayout from "../layout";
 import Navbar from "../components/navbar/Navbar";
 import CreateCardFormatForm from "./components/CreateCardFormatForm";
 import CardPreview from "./components/CardPreview";
+import { useIntl } from "react-intl";
 
 export type CardFormatType = {
   logo: string | null;
@@ -13,6 +14,7 @@ export type CardFormatType = {
   selectedColor: string | null;
 };
 const CardFormatClient = () => {
+  const intl = useIntl();
   const [cardFormat, setCardFormat] = useState<any>(null);
 
   // GET USER TYPE FROM API
@@ -24,7 +26,9 @@ const CardFormatClient = () => {
   return (
     <div className="">
       {/* @ts-ignore */}
-      <Navbar title="Card Format"></Navbar>
+      <Navbar
+        title={intl.formatMessage({ id: "cardformat.navbar.header" })}
+      ></Navbar>
       <div className="w-full flex flex-row flex-wrap justify-center md:justify-start">
         <div className="p-5">
           <CreateCardFormatForm

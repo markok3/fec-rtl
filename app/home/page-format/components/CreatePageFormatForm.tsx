@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import UploadButton from "../../card-format/components/UploadButton";
 import PrimaryButton from "@/app/components/buttons/PrimaryButton";
 import SelectColorDropdown from "../../card-format/components/SelectColorDropdown";
+import { useIntl } from "react-intl";
 
 interface CreatePageFormatFormProps {
   setPageFormat: React.Dispatch<
@@ -17,6 +18,8 @@ interface CreatePageFormatFormProps {
 const CreatePageFormatForm: React.FC<CreatePageFormatFormProps> = ({
   setPageFormat,
 }) => {
+  const intl = useIntl(); // Initialize the useIntl hook
+
   const [logo, setLogo] = useState<string | null>(null);
   const [image, setImage] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string>("1D2D50");
@@ -72,9 +75,11 @@ const CreatePageFormatForm: React.FC<CreatePageFormatFormProps> = ({
     <div>
       <div className="grid grid-cols-2 sm:grid-cols-2 sm:grid-rows-4 gap-y-10 ">
         <div className="">
-          <h2 className="text-xl md:text-2xl font-semibold text-blue">Logo</h2>
-          <p className="text-sm mt-2 md:mt-0 md:text-medium text-themeGray">
-            Your Business Logo Will <br /> Appear At The Top Of The Card
+          <h2 className="text-xl md:text-2xl font-semibold text-blue">
+            {intl.formatMessage({ id: "pageformat.form.logo" })}
+          </h2>
+          <p className="text-sm mt-2 md:mt-0 md:text-medium text-themeGray max-w-[250px]">
+            {intl.formatMessage({ id: "pageformat.form.logoDescription" })}
           </p>
         </div>
 
@@ -83,10 +88,11 @@ const CreatePageFormatForm: React.FC<CreatePageFormatFormProps> = ({
         </div>
 
         <div>
-          <h2 className="text-xl md:text-2xl font-semibold text-blue">Image</h2>
-          <p className="text-sm mt-2 md:mt-0 md:text-medium text-themeGray">
-            An Image That Will Appear <br />
-            Under Your Business Logo
+          <h2 className="text-xl md:text-2xl font-semibold text-blue">
+            {intl.formatMessage({ id: "pageformat.form.image" })}
+          </h2>
+          <p className="text-sm mt-2 md:mt-0 md:text-medium text-themeGray max-w-[250px]">
+            {intl.formatMessage({ id: "pageformat.form.imageDescription" })}
           </p>
         </div>
         <div className="flex just-center ">
@@ -94,9 +100,11 @@ const CreatePageFormatForm: React.FC<CreatePageFormatFormProps> = ({
         </div>
 
         <div className="">
-          <h2 className="text-xl md:text-2xl font-semibold text-blue">Color</h2>
-          <p className="text-sm mt-2 md:mt-0 md:text-medium text-themeGray">
-            Card Color for your business
+          <h2 className="text-xl md:text-2xl font-semibold text-blue">
+            {intl.formatMessage({ id: "pageformat.form.color" })}
+          </h2>
+          <p className="text-sm mt-2 md:mt-0 md:text-medium text-themeGray max-w-[250px]">
+            {intl.formatMessage({ id: "pageformat.form.colorDescription" })}
           </p>
         </div>
         <div className="flex justify-end md:justify-center ">
@@ -108,31 +116,31 @@ const CreatePageFormatForm: React.FC<CreatePageFormatFormProps> = ({
 
         <div className="">
           <h2 className="text-xl md:text-2xl font-semibold text-blue">
-            Message
+            {intl.formatMessage({ id: "pageformat.form.message" })}
           </h2>
-          <p className="text-sm mt-2 md:mt-0 md:text-medium text-themeGray">
-            A Message Appears On The Card Add Page
+          <p className="text-sm mt-2 md:mt-0 md:text-medium text-themeGray max-w-[250px]">
+            {intl.formatMessage({ id: "pageformat.form.messageDescription" })}
           </p>
         </div>
         <div className="flex justify-end md:justify-center ">
           <textarea
             className="w-[150px] md:w-[200px] mt-2 border-themeGray border-2 rounded-xl px-2 py-1 text-themeGray"
             onChange={(e) => setMessage(e.target.value)}
-            placeholder="Enter Your Message Here"
+            placeholder={intl.formatMessage({
+              id: "pageformat.form.messageDescription",
+            })}
           ></textarea>
         </div>
       </div>
 
       <div className="flex justify-center gap-2 mt-8">
         <PrimaryButton
-          label="
-      Preview"
+          label={intl.formatMessage({ id: "pageformat.form.previewButton" })}
           className="text-xl font-semibold w-1/2 py-2"
           onClick={handlePreview}
         />
         <PrimaryButton
-          label="
-      Save"
+          label={intl.formatMessage({ id: "pageformat.form.saveButton" })}
           className="text-xl font-semibold w-1/2 py-2"
           onClick={handleSave}
         />

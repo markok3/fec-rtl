@@ -16,7 +16,7 @@ const ShareYourPageModal = () => {
 
   let bodyContent = (
     <div className="flex flex-col items-center">
-      <div className="flex md:flex-row flex-col items-center">
+      <div className="flex md:flex-row-reverse md:justify-center md:gap-3  flex-col items-center">
         <Image src={Qr} alt="qr" className="h-auto md:w-1/3 w-1/2" />
         <div className="flex flex-col items-center justify-center gap-2">
           <div className="flex flex-row items-center gap-2">
