@@ -27,79 +27,81 @@ import { IoIosArrowBack } from "react-icons/io";
 import TableActions from "./TableActions";
 import { useIntl } from "react-intl";
 
-export const columns: ColumnDef<User>[] = [
-  {
-    accessorKey: "index",
-    size: 50,
-    maxSize: 50,
-    header: () => {
-      const intl = useIntl();
-      return (
-        <div className="flex w-full h-full items-center justify-center border-r-2">
-          {intl.formatMessage({ id: "hash" })}
-        </div>
-      );
-    },
-  },
-  {
-    size: 150,
-    accessorKey: "name",
-    header: ({ column }) => {
-      const intl = useIntl();
-      return (
-        <div className="flex w-full h-full items-center border-r-2 px-4 text-left">
-          <span className="">
-            {intl.formatMessage({ id: "dataTable.name" })}
-          </span>
-        </div>
-      );
-    },
-    cell: ({ row }) => (
-      <div className="flex w-full h-full items-center text-left text-blue font-medium ">
-        {row.getValue("name")}
-      </div>
-    ),
-  },
-  {
-    accessorKey: "points",
-    header: () => {
-      const intl = useIntl();
-      return (
-        <div className="flex w-full h-full items-center  border-r-2 px-4 text-left">
-          {intl.formatMessage({ id: "dataTable.points" })}
-        </div>
-      );
-    },
-    cell: ({ row }) => {
-      const intl = useIntl();
-      const points = parseFloat(row.getValue("points"));
-      return (
-        <div className="flex w-full h-full items-center text-left text-blue font-semibold">
-          {points} <span>{intl.formatMessage({ id: "dataTable.points" })}</span>
-        </div>
-      );
-    },
-  },
-
-  {
-    accessorKey: "actions",
-    header: () => <div className="text-right "></div>,
-    cell: () => {
-      return (
-        <div className="flex justify-end  text-blue font-semibold">
-          <TableActions />
-        </div>
-      );
-    },
-  },
-];
-
 type DataTableProps = {
   data: User[];
 };
 
 export function DataTable({ data }: DataTableProps) {
   const intl = useIntl();
+
+  const columns: ColumnDef<User>[] = [
+    {
+      accessorKey: "index",
+      size: 50,
+      maxSize: 50,
+      header: () => {
+        const intl = useIntl();
+        return (
+          <div className="flex w-full h-full items-center justify-center border-r-2">
+            {intl.formatMessage({ id: "hash" })}
+          </div>
+        );
+      },
+    },
+    {
+      size: 150,
+      accessorKey: "name",
+      header: ({ column }) => {
+        const intl = useIntl();
+        return (
+          <div className="flex w-full h-full items-center border-r-2 px-4 text-left">
+            <span className="">
+              {intl.formatMessage({ id: "dataTable.name" })}
+            </span>
+          </div>
+        );
+      },
+      cell: ({ row }) => (
+        <div className="flex w-full h-full items-center text-left text-blue font-medium ">
+          {row.getValue("name")}
+        </div>
+      ),
+    },
+    {
+      accessorKey: "points",
+      header: () => {
+        const intl = useIntl();
+        return (
+          <div className="flex w-full h-full items-center  border-r-2 px-4 text-left">
+            {intl.formatMessage({ id: "dataTable.points" })}
+          </div>
+        );
+      },
+      cell: ({ row }) => {
+        const intl = useIntl();
+        const points = parseFloat(row.getValue("points"));
+        return (
+          <div className="flex w-full h-full items-center text-left text-blue font-semibold">
+            {points}{" "}
+            <span>{intl.formatMessage({ id: "dataTable.points" })}</span>
+          </div>
+        );
+      },
+    },
+
+    {
+      accessorKey: "actions",
+      header: () => <div className="text-right "></div>,
+      cell: () => {
+        return (
+          <div className="flex justify-end  text-blue font-semibold">
+            <TableActions />
+          </div>
+        );
+      },
+    },
+  ];
+
   const recordsPerPage = 10;
 
   const [sorting, setSorting] = React.useState<SortingState>([]);
