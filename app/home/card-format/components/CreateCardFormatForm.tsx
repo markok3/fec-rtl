@@ -27,6 +27,7 @@ const CreateCardFormatForm: React.FC<CreateCardFormatFormProps> = ({
   const [stamps, setStamps] = useState<number>(0);
   const [points, setPoints] = useState<number>(0);
 
+  // logo image upload
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -165,9 +166,6 @@ const CreateCardFormatForm: React.FC<CreateCardFormatFormProps> = ({
             setSelectedColor={setSelectedColor}
           />
         </div>
-
-        {/* Repeat the above two divs for each row */}
-        {/* ... */}
       </div>
       <div className="flex justify-center gap-2 mt-6">
         <PrimaryButton

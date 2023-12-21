@@ -7,8 +7,6 @@ import { FaCheckCircle } from "react-icons/fa";
 import { FaCircle } from "react-icons/fa";
 
 const Stamps: React.FC<StampsProps> = ({ currentStamps, totalStamps }) => {
-  // Your component logic here
-
   return (
     <div className=" w-full flex items-center justify-center gap-4">
       {Array.from({ length: currentStamps }).map((_, index) => (

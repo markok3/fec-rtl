@@ -1,4 +1,6 @@
 {
+  "hash": "#",
+
   "authorization.login.header": "Login!",
   "authorization.login.paragraph": "Log in to your account or sign up to get started",
   "authorization.signup.header": "Join Today!",
@@ -31,5 +33,27 @@
   "createAccount.termsAndConditions": "Your registration means that you agree to the terms and conditions.",
   "createAccount.signUpLabel": "Sign up",
   "createAccount.alreadyHaveAccount": "Already have an account?",
-  "createAccount.signInLabel": "Sign in"
+  "createAccount.signInLabel": "Sign in",
+
+  "dashboard.navbar.header": "Hi, {name}, I hope you have a nice day!",
+
+  "dataTable.name": "Name",
+  "dataTable.points": "Points",
+  "dataTable.actions": "Actions",
+  "dataTable.noResults": "No results.",
+
+  "sidebar.home": "Home",
+  "sidebar.customers": "Customers",
+  "sidebar.cardFormat": "Card Format",
+  "sidebar.pageFormat": "Page Format",
+  "sidebar.geographic": "Geographic",
+  "sidebar.settings": "Settings",
+  "sidebar.help": "Help",
+  "sidebar.signOut": "Sign out",
+
+  "customerActions.lastCustomers": "Last Customers",
+  "customerActions.shareYourPage": "Share your page",
+  "customerActions.addCustomer": "Add customer",
+  "customerActions.record": "Record",
+  "customerActions.redeem": "Redeem"
 }

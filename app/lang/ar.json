@@ -1,4 +1,6 @@
 {
+  "hash": "رقم",
+
   "authorization.login.header": "تسجيل الدخول!",
   "authorization.login.paragraph": "قم بتسجيل الدخول إلى حسابك أو قم بالتسجيل للبدء",
   "authorization.signup.header": "انضم اليوم!",
@@ -31,5 +33,27 @@
   "createAccount.termsAndConditions": "تسجيلك يعني أنك توافق على الشروط والأحكام.",
   "createAccount.signUpLabel": "سجل",
   "createAccount.alreadyHaveAccount": "هل لديك حساب؟",
-  "createAccount.signInLabel": "تسجيل الدخول"
+  "createAccount.signInLabel": "تسجيل الدخول",
+
+  "dashboard.navbar.header": "مرحبًا، {name}، أتمنى لك يومًا جميلاً!",
+
+  "dataTable.name": "الاسم",
+  "dataTable.points": "النقاط",
+  "dataTable.actions": "الإجراءات",
+  "dataTable.noResults": "لا توجد نتائج.",
+
+  "sidebar.home": "الرئيسية",
+  "sidebar.customers": "العملاء",
+  "sidebar.cardFormat": "تنسيق البطاقة",
+  "sidebar.pageFormat": "تنسيق الصفحة",
+  "sidebar.geographic": "الجغرافيا",
+  "sidebar.settings": "الإعدادات",
+  "sidebar.help": "المساعدة",
+  "sidebar.signOut": "تسجيل الخروج",
+
+  "customerActions.lastCustomers": "آخر العملاء",
+  "customerActions.shareYourPage": "شارك صفحتك",
+  "customerActions.addCustomer": "إضافة عميل",
+  "customerActions.record": "تسجيل",
+  "customerActions.redeem": "استرداد"
 }

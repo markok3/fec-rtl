@@ -17,7 +17,7 @@ const CardFormatClient = () => {
 
   // GET USER TYPE FROM API
   const clientType = "stamps";
-  const cardHolderName = "Murat";
+  const cardHolderName = "Meshari";
 
   console.log(cardFormat);
 

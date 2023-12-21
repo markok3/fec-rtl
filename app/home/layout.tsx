@@ -16,7 +16,7 @@ export default function HomePageLayout({
     <ClientOnly>
       <div className="w-full">
         <body className=" relative sm:flex sm:flex-row w-full md:static ">
-          <div className=" absolute bg-white z-50 md:flex md:static">
+          <div className=" absolute bg-white z-50 md:flex md:static min-h-screen">
             <SideBar />
           </div>
           <div className="w-full overflow-auto max-h-screen">

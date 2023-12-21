@@ -61,12 +61,10 @@ const Navbar: React.FC<NavbarProps> = ({ title, children }) => {
         <h1 className="text-xl xl:text-3xl text-gray-600 font-semibold mr-4">
           {title}
         </h1>
-        <div className="flex flex-row space-x-8  ">
+        <div className="flex flex-row gap-x-8  ">
           {children}
           <DarkModeSwitch />
-          <div className="">
-            <LanguageSelect />
-          </div>
+          <LanguageSelect />
         </div>
       </div>
     </div>

@@ -11,8 +11,16 @@ const PointsCalculatorButton: React.FC<PointsCalculatorButtonProps> = ({
   points,
   setPoints,
 }) => {
-  const increment = () => setPoints(points + 1);
-  const decrement = () => setPoints(points - 1);
+  const increment = () => {
+    if (points < 12) {
+      setPoints(points + 1);
+    }
+  };
+  const decrement = () => {
+    if (points > 0) {
+      setPoints(points - 1);
+    }
+  };
 
   return (
     <div>
