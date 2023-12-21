@@ -5,11 +5,13 @@ import useRecordPointsModal from "@/app/hooks/useRecordPointsModal";
 import useRedeemRewardsModal from "@/app/hooks/useRedeemRewardsModal";
 import useShareYourPageModal from "@/app/hooks/useShareYourPageModal";
 import React from "react";
+import { useIntl } from "react-intl";
 
 import { IoMdPersonAdd } from "react-icons/io";
 import { MdAddBox } from "react-icons/md";
 
 const CustomerActions = () => {
+  const intl = useIntl();
   const createCustomer = useCreateCustomerModal();
   const recordPoints = useRecordPointsModal();
   const redeemRewards = useRedeemRewardsModal();
@@ -18,34 +20,34 @@ const CustomerActions = () => {
   return (
     <div>
       <div className="flex flex-col md:flex-row px-10 py-4 items-center justify-between">
-        <h3 className="text-xl text-themeGray">Last Customers</h3>
+        <h3 className="text-xl text-themeGray">
+          {intl.formatMessage({ id: "customerActions.lastCustomers" })}
+        </h3>
 
-        <div className="flex flex-row gap-4 items-center mt-3 ">
+        <div className="flex flex-row gap-4 items-center mt-3">
           <PrimaryButton
-            label="Share your page"
+            label={intl.formatMessage({ id: "customerActions.shareYourPage" })}
             className="px-4 py-2"
             onClick={() => shareYourPage.onOpen()}
           />
           <ButtonWithIcon
             Icon={IoMdPersonAdd}
-            label="Add customer"
+            label={intl.formatMessage({ id: "customerActions.addCustomer" })}
             className="px-4 py-3 md:py-2"
             onClick={() => createCustomer.onOpen()}
           />
           <ButtonWithIcon
             Icon={MdAddBox}
-            label="Record"
+            label={intl.formatMessage({ id: "customerActions.record" })}
             className="px-4 py-3 md:py-2 hidden md:flex"
             onClick={() => recordPoints.onOpen()}
           />
           <ButtonWithIcon
             Icon={MdAddBox}
-            label="Redeem"
+            label={intl.formatMessage({ id: "customerActions.redeem" })}
             className="px-4 py-3 md:py-2"
             onClick={() => redeemRewards.onOpen()}
           />
-
-          {/* <AddCustomerSVG className="w-10 h-auto text-black bg-black" /> */}
         </div>
       </div>
     </div>

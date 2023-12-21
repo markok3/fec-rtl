@@ -44,7 +44,7 @@ const GeographicClient = () => {
             onClick={handleSave}
           />
 
-          <div className="z-10">
+          <div className="z-10 mb-5">
             <MapContainer
               center={position}
               zoom={13}

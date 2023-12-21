@@ -13,20 +13,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -38,22 +25,18 @@ import {
 import { User } from "../apiMock/apiMock";
 import { IoIosArrowBack } from "react-icons/io";
 import TableActions from "./TableActions";
+import { useIntl } from "react-intl";
 
 export const columns: ColumnDef<User>[] = [
   {
     accessorKey: "index",
     size: 50,
     maxSize: 50,
-    header: () => (
-      <div className="flex w-full h-full items-center justify-center border-r-2">
-        #
-      </div>
-    ),
-    cell: ({ row }) => {
-      const index: number = row.getValue("index");
+    header: () => {
+      const intl = useIntl();
       return (
-        <div className="  font-medium text-themeGray w-full justify-center flex h-full">
-          <span>#{index}</span>
+        <div className="flex w-full h-full items-center justify-center border-r-2">
+          {intl.formatMessage({ id: "hash" })}
         </div>
       );
     },
@@ -62,26 +45,37 @@ export const columns: ColumnDef<User>[] = [
     size: 150,
     accessorKey: "name",
     header: ({ column }) => {
+      const intl = useIntl();
       return (
-        <div className="flex w-full h-full items-center  border-r-2 pl-4 text-left">
-          <span className="">Name</span>
+        <div className="flex w-full h-full items-center border-r-2 px-4 text-left">
+          <span className="">
+            {intl.formatMessage({ id: "dataTable.name" })}
+          </span>
         </div>
       );
     },
     cell: ({ row }) => (
-      <div className="text-blue font-medium text-left">
+      <div className="flex w-full h-full items-center text-left text-blue font-medium ">
         {row.getValue("name")}
       </div>
     ),
   },
   {
     accessorKey: "points",
-    header: () => <div className="text-left pl-4">Points</div>,
+    header: () => {
+      const intl = useIntl();
+      return (
+        <div className="flex w-full h-full items-center  border-r-2 px-4 text-left">
+          {intl.formatMessage({ id: "dataTable.points" })}
+        </div>
+      );
+    },
     cell: ({ row }) => {
+      const intl = useIntl();
       const points = parseFloat(row.getValue("points"));
       return (
-        <div className="text-left text-blue font-semibold">
-          {points} <span>Points</span>
+        <div className="flex w-full h-full items-center text-left text-blue font-semibold">
+          {points} <span>{intl.formatMessage({ id: "dataTable.points" })}</span>
         </div>
       );
     },
@@ -105,6 +99,7 @@ type DataTableProps = {
 };
 
 export function DataTable({ data }: DataTableProps) {
+  const intl = useIntl();
   const recordsPerPage = 10;
 
   const [sorting, setSorting] = React.useState<SortingState>([]);
@@ -151,8 +146,6 @@ export function DataTable({ data }: DataTableProps) {
     },
   });
 
-  console.log();
-
   return (
     <div className="">
       <div className="rounded-md border">
@@ -190,8 +183,12 @@ export function DataTable({ data }: DataTableProps) {
                       style={{ maxWidth: cell.column.getSize() }}
                       width={cell.column.getSize()}
                     >
+                      {/* add numbering on first column */}
                       {index === 0 ? (
-                        <span className="">#{indexRow + 1}</span>
+                        <span className="">
+                          {intl.formatMessage({ id: "hash" })}
+                          {indexRow + 1}
+                        </span>
                       ) : (
                         flexRender(
                           cell.column.columnDef.cell,
@@ -208,16 +205,16 @@ export function DataTable({ data }: DataTableProps) {
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  {intl.formatMessage({ id: "dataTable.noResults" })}
                 </TableCell>
               </TableRow>
             )}
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-center space-x-2 py-4 w-full">
+      <div className="flex items-center justify-center gap-x-2 py-4 w-full">
         {
-          <div className="flex items-center justify-center space-x-2 py-4 w-full">
+          <div className="flex items-center justify-center gap-x-2 py-4 w-full">
             <IoIosArrowBack
               size={28}
               className="text-themeGray cursor-pointer"

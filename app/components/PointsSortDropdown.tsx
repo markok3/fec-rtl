@@ -49,7 +49,7 @@ const PointsSortPointsDropdown: React.FC<PointsSortPointsDropdownProps> = ({
 
   return (
     <div
-      className="z-50 relative text-themeGray font-semibold"
+      className="z-30 relative text-themeGray font-semibold"
       ref={dropdownRef}
     >
       {/* DROPDOWN BUTTON */}

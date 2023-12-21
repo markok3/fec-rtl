@@ -23,32 +23,43 @@ import useSideBarMenuModal from "@/app/hooks/useSideBarMenuModal";
 
 import { RxCross2 } from "react-icons/rx";
 import Logo from "@/app/components/Logo";
+import { useIntl } from "react-intl";
 
 const linksTopPart = [
-  { href: "/home/dashboard", label: "Home", Icon: HomeSVG },
-  { href: "/home/customers", label: "Customers", Icon: CustomersSVG },
-  { href: "/home/card-format", label: "Card Format", Icon: CardSVG },
-  { href: "/home/page-format", label: "Page Format", Icon: PageFormatSVG },
-  { href: "/home/geographic", label: "Geographic", Icon: GeographicSVG },
+  { href: "/home/dashboard", label: "sidebar.home", Icon: HomeSVG },
+  { href: "/home/customers", label: "sidebar.customers", Icon: CustomersSVG },
+  { href: "/home/card-format", label: "sidebar.cardFormat", Icon: CardSVG },
+  {
+    href: "/home/page-format",
+    label: "sidebar.pageFormat",
+    Icon: PageFormatSVG,
+  },
+  {
+    href: "/home/geographic",
+    label: "sidebar.geographic",
+    Icon: GeographicSVG,
+  },
 ];
 
 const linksBottomPart = [
-  { href: "/home/settings", label: "Settings", Icon: IoMdSettings },
-  { href: "/home/help", label: "Help", Icon: IoMdHelpCircle },
-  { href: "/home/sign-out", label: "Sign out", Icon: SignOutSVG },
+  { href: "/home/settings", label: "sidebar.settings", Icon: IoMdSettings },
+  { href: "/home/help", label: "sidebar.help", Icon: IoMdHelpCircle },
+  { href: "/home/sign-out", label: "sidebar.signOut", Icon: SignOutSVG },
 ];
 
 const SideBar = () => {
+  const intl = useIntl();
   const pathname = usePathname();
   const sideBarMenuModal = useSideBarMenuModal();
   console.log(sideBarMenuModal.isOpen);
   console.log(pathname);
   return (
     <div
-      className={`min-h-screen max-h-screen translate duration-300 z-50 ${
-        sideBarMenuModal.isOpen ? "-translate-x-0 " : "-translate-x-full"
-      } 
-    ${sideBarMenuModal.isOpen ? "opacity-100" : "opacity-0 hidden  md:flex"}  `}
+      className={`h-screen translate duration-300 flex ${
+        sideBarMenuModal.isOpen
+          ? "-translate-x-0 opacity-100 flex-col"
+          : "-translate-x-full opacity-0 hidden flex-row"
+      }`}
     >
       <div className="p-4 text-blue md:hidden">
         <RxCross2 size={26} onClick={sideBarMenuModal.onClose} />
@@ -64,12 +75,11 @@ const SideBar = () => {
                   ? "flex gap-2 bg-blue text-white px-4 py-4 rounded-md "
                   : "flex gap-2 bg-white text-themeGray px-4 py-4 rounded-md"
               }
-              items-center gap-3 
-              `}
+              items-center gap-3`}
               href={link.href}
             >
               <link.Icon width={26} height={26} />
-              {link.label}
+              {intl.formatMessage({ id: link.label })}
             </Link>
           ))}
         </div>
@@ -86,7 +96,7 @@ const SideBar = () => {
               href={link.href}
             >
               <link.Icon size={28} />
-              {link.label}
+              {intl.formatMessage({ id: link.label })}
             </Link>
           ))}
         </div>

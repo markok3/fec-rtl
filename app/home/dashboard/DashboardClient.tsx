@@ -12,9 +12,13 @@ import { User, userData } from "@/app/apiMock/apiMock";
 // GET DATA FROM API
 import { cardData } from "@/app/apiMock/apiMock";
 import { applyDateFilter } from "@/app/utils/filterUtils";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 const DashboardClient = () => {
+  const intl = useIntl();
+
+  const userName = "Meshari";
+
   const [sortedData, setSortedData] = useState<User[]>([]);
 
   const handleDateChange = (date: string) => {
@@ -35,7 +39,12 @@ const DashboardClient = () => {
   return (
     <div className="">
       {/* @ts-ignore */}
-      <Navbar title="Hi Meshari, I hope you have a nice day">
+      <Navbar
+        title={intl.formatMessage(
+          { id: "dashboard.navbar.header" },
+          { name: userName }
+        )}
+      >
         <DateSelect className="" onDateChange={handleDateChange} />
       </Navbar>
       <div className="w-full flex flex-col">

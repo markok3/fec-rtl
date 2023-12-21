@@ -47,7 +47,7 @@ const DateSelect: React.FC<DateSelectProps> = ({ className, onDateChange }) => {
 
   return (
     <div
-      className="z-50 relative text-themeGray font-semibold"
+      className="z-40 relative text-themeGray font-semibold"
       ref={dropdownRef}
     >
       {/* DROPDOWN BUTTON */}

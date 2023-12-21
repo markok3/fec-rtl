@@ -12,7 +12,7 @@ interface PagePreviewProps {
 const PagePreview: React.FC<PagePreviewProps> = ({ pageFormat }) => {
   return (
     <div
-      className={`max-w-[400px] text-white rounded-xl bg-blue`}
+      className={`max-w-[380px] text-white rounded-xl bg-blue`}
       style={{
         backgroundColor: pageFormat?.selectedColor || "blue",
         borderRadius: "1rem",
@@ -27,13 +27,13 @@ const PagePreview: React.FC<PagePreviewProps> = ({ pageFormat }) => {
           )}
         </div>
         {pageFormat && pageFormat.image ? (
-          <img
-            src={pageFormat.image}
-            alt="Card"
-            className="min-w-[400px] h-[200px]"
-          />
+          <img src={pageFormat.image} alt="Card" className="w-auto h-[180px]" />
         ) : (
-          <Image src={Background} alt="background" className="h-auto w-full" />
+          <Image
+            src={Background}
+            alt="background"
+            className="h-[180px] w-auto"
+          />
         )}
         <div className="flex flex-col items-center w-full justify-center p-4 text-center">
           <p className="py-5">
@@ -42,7 +42,7 @@ const PagePreview: React.FC<PagePreviewProps> = ({ pageFormat }) => {
               : "Write Here A Welcome Text That appears  For your customers to download the card"}
           </p>
 
-          <AppleWalletSVG />
+          <AppleWalletSVG className="my-8" />
         </div>
       </div>
     </div>
