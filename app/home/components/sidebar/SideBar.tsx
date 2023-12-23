@@ -55,7 +55,7 @@ const SideBar = () => {
   console.log(pathname);
   return (
     <div
-      className={`h-screen translate duration-300 flex ${
+      className={`h-screen translate duration-300 flex z-50 ${
         sideBarMenuModal.isOpen
           ? "-translate-x-0 opacity-100 flex-col"
           : "-translate-x-full opacity-0 hidden flex-row"
