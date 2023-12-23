@@ -25,7 +25,7 @@ const HelpPageClient = () => {
             placeholder={intl.formatMessage({
               id: "helppage.createTicketPlaceholder",
             })}
-            className="h-32"
+            className="h-32 w-full"
             onChange={(event) => setMessage(event.target.value)}
           />
           <PrimaryButton

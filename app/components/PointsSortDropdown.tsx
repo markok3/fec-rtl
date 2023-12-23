@@ -1,34 +1,48 @@
 import React, { useEffect, useRef, useState } from "react";
 import ArrowDown from "@/public/images/svgs/arrowDown.svg";
+import { useIntl } from "react-intl";
 
-type SortPoints = {
-  sortPoints: string;
+export type SortPointsOption = {
+  sortPoints: SORT_POINTS_ENUM;
+  value: string;
 };
 
-const sortPointsOptions: SortPoints[] = [
-  { sortPoints: "asc" },
-  { sortPoints: "desc" },
-  { sortPoints: "none" },
+export enum SORT_POINTS_ENUM {
+  ASC,
+  DESC,
+  NONE,
+}
+
+const sortPointsOptions: SortPointsOption[] = [
+  { sortPoints: SORT_POINTS_ENUM.ASC, value: "points.dropdown.ascending" },
+  {
+    sortPoints: SORT_POINTS_ENUM.DESC,
+    value: "points.dropdown.descending",
+  },
+  { sortPoints: SORT_POINTS_ENUM.NONE, value: "points.dropdown.none" },
 ];
 
 interface PointsSortPointsDropdownProps {
   className?: string;
-  onSortChange: (sortPoints: string) => void;
+  onSortChange: (sortPoints: SortPointsOption) => void;
 }
+
 const PointsSortPointsDropdown: React.FC<PointsSortPointsDropdownProps> = ({
   className,
   onSortChange,
 }) => {
-  const [sortPoints, setsortPoints] = useState<SortPoints>({
-    sortPoints: "asc",
-  });
+  const intl = useIntl();
+
+  const [sortPoints, setSortPoints] = useState<SortPointsOption>(
+    sortPointsOptions[2]
+  );
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const handleOptionClick = (option: SortPoints) => {
-    setsortPoints(option);
+  const handleOptionClick = (option: SortPointsOption) => {
+    setSortPoints(option);
     setIsOpen(false);
-    onSortChange(option.sortPoints);
+    onSortChange(option);
   };
 
   useEffect(() => {
@@ -58,27 +72,26 @@ const PointsSortPointsDropdown: React.FC<PointsSortPointsDropdownProps> = ({
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="flex justify-between w-full">
-          <span>{sortPoints.sortPoints}</span>
+          <span>{intl.formatMessage({ id: sortPoints.value })}</span>
           <ArrowDown />
         </div>
-        {/* <Image src={arrowDown} alt="arrowDown" className=""></Image> */}
       </div>
 
       {/* DROPDOWN LIST */}
       {isOpen && (
         <div className={`mt-2 absolute w-36 ${className}`}>
-          {sortPointsOptions.map((option) => {
-            if (option.sortPoints !== sortPoints.sortPoints)
-              return (
+          {sortPointsOptions.map(
+            (option) =>
+              option.sortPoints !== sortPoints.sortPoints && (
                 <div
                   key={option.sortPoints}
                   className="w-full flex items-center justify-center mt-1  py-2 border rounded-md cursor-pointer bg-white hover:bg-gray-100"
                   onClick={() => handleOptionClick(option)}
                 >
-                  <span>{option.sortPoints}</span>
+                  <span>{intl.formatMessage({ id: option.value })}</span>
                 </div>
-              );
-          })}
+              )
+          )}
         </div>
       )}
     </div>

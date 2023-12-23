@@ -1,33 +1,43 @@
 import React, { useEffect, useRef, useState } from "react";
 import ArrowDown from "@/public/images/svgs/arrowDown.svg";
+import { useIntl } from "react-intl";
 
-type NameSort = {
-  sort: string;
+export type NameSortOption = {
+  sort: NAME_SORT_ENUM;
+  value: string;
 };
 
-const nameSortOptions: NameSort[] = [
-  { sort: "A-Z" },
-  { sort: "Z-A" },
-  { sort: "none" },
+export enum NAME_SORT_ENUM {
+  A_Z,
+  Z_A,
+  NONE,
+}
+
+const nameSortOptions: NameSortOption[] = [
+  { sort: NAME_SORT_ENUM.A_Z, value: "name.dropdown.a-z" },
+  { sort: NAME_SORT_ENUM.Z_A, value: "name.dropdown.z-a" },
+  { sort: NAME_SORT_ENUM.NONE, value: "name.dropdown.none" },
 ];
 
 interface NameSortDropdownProps {
   className?: string;
-  onSortChange: (sortPoints: string) => void;
+  onSortChange: (sortPoints: NameSortOption) => void;
 }
 
 const NameSortDropdown: React.FC<NameSortDropdownProps> = ({
   className,
   onSortChange,
 }) => {
-  const [sort, setsort] = useState<NameSort>({ sort: "A-Z" });
+  const intl = useIntl();
+
+  const [sort, setsort] = useState<NameSortOption>(nameSortOptions[2]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const handleOptionClick = (option: NameSort) => {
+  const handleOptionClick = (option: NameSortOption) => {
     setsort(option);
     setIsOpen(false);
-    onSortChange(option.sort);
+    onSortChange(option);
   };
 
   useEffect(() => {
@@ -57,7 +67,7 @@ const NameSortDropdown: React.FC<NameSortDropdownProps> = ({
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="flex justify-between w-full">
-          <span>{sort.sort}</span>
+          <span>{intl.formatMessage({ id: sort.value })}</span>
           <ArrowDown />
         </div>
         {/* <Image src={arrowDown} alt="arrowDown" className=""></Image> */}
@@ -74,7 +84,7 @@ const NameSortDropdown: React.FC<NameSortDropdownProps> = ({
                   className="w-full flex items-center justify-center mt-1  py-2 border rounded-md cursor-pointer bg-white hover:bg-gray-100"
                   onClick={() => handleOptionClick(option)}
                 >
-                  <span>{option.sort}</span>
+                  <span>{intl.formatMessage({ id: option.value })}</span>
                 </div>
               );
           })}
