@@ -19,7 +19,7 @@ export default function HomePageLayout({
     <ClientOnly>
       <div className="w-full">
         <body className=" relative sm:flex sm:flex-row w-full md:static ">
-          <div className=" absolute  md:flex md:static min-h-screen">
+          <div className=" absolute  md:flex md:static min-h-screen z-30 bg-white">
             <SideBar />
             <ShareYourPageModal />
             <RedeemCustomerRewardsModal />

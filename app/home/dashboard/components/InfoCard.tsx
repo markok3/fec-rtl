@@ -17,7 +17,7 @@ const InfoCard: React.FC<InfoCardProps> = ({
 }) => {
   return (
     <div className="relative w-[300px] xl:w-[370px] h-[190px] bg-blue rounded-xl p-4">
-      <div className="h-full flex flex-col justify-between relative z-30">
+      <div className="h-full flex flex-col justify-between relative z-20">
         <div className="flex flex-row w-full justify-between text-white items-center">
           <div className="font-semibold">{title}</div>
           <div className="text-sm">{subtitle}</div>
