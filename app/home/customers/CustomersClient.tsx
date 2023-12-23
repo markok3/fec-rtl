@@ -1,6 +1,6 @@
 "use client";
 import { DataTable } from "@/app/components/DataTable";
-import DateSelect from "@/app/components/DateSelect";
+import DateSelect, { DateOption } from "@/app/components/DateSelect";
 import LanguageSelect from "@/app/components/LanguageSelect";
 import DarkModeSwitch from "@/app/components/darkModeSwitch/DarkModeSwitch";
 import React, { useEffect, useState } from "react";
@@ -9,9 +9,16 @@ import Navbar from "../components/navbar/Navbar";
 import { IoExitOutline } from "react-icons/io5";
 import ButtonWithIcon from "@/app/components/buttons/ButtonWithIcon";
 import { title } from "process";
-import GenderDropdown from "@/app/components/GenderDropdown";
-import NameSortDropdown from "@/app/components/NameSortDropdown";
-import PointssortPointsDropdown from "@/app/components/PointsSortDropdown";
+import GenderDropdown, {
+  GENDER_OPTION_ENUM,
+  GenderOption,
+} from "@/app/components/GenderDropdown";
+import NameSortDropdown, {
+  NameSortOption,
+} from "@/app/components/NameSortDropdown";
+import PointssortPointsDropdown, {
+  SortPointsOption,
+} from "@/app/components/PointsSortDropdown";
 import PointsSortPointsDropdown from "@/app/components/PointsSortDropdown";
 import { exportDataToPDF } from "@/app/utils/exportDataToPDF";
 
@@ -32,18 +39,18 @@ const CustomersClient = () => {
     setSortedData(userData);
   }, []);
 
-  const handleSortChange = (newSortPoints: string) => {
+  const handleSortChange = (newSortPoints: SortPointsOption) => {
     const updatedSortedData = applyPointsSort(userData, newSortPoints);
     applyFilters(updatedSortedData);
   };
 
-  const handleNameSortChange = (newSort: string) => {
+  const handleNameSortChange = (newSort: NameSortOption) => {
     const updatedSortedData = applyNameSort(userData, newSort);
 
     applyFilters(updatedSortedData);
   };
 
-  const handleGenderChange = (selectedGender: string | null) => {
+  const handleGenderChange = (selectedGender: GenderOption | null) => {
     let updatedSortedData = applyGenderFilter(userData, selectedGender);
     applyFilters(updatedSortedData);
   };
@@ -52,7 +59,7 @@ const CustomersClient = () => {
     setSortedData(dataToFilter);
   };
 
-  const handleDateChange = (date: string) => {
+  const handleDateChange = (date: DateOption) => {
     console.log(date);
 
     let updatedSortedData = applyDateFilter(userData, date);

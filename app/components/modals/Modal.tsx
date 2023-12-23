@@ -78,7 +78,7 @@ const Modal: React.FC<ModalProps> = ({
         overflow-y-auto
         fixed
         inset-0
-        w-screen
+        w-full
         z-50
         outline-none
         focus:outline-none

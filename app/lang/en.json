@@ -104,9 +104,32 @@
   "settings.changeEmail": "Change Email",
   "settings.changeMobileNumber": "Change Mobile Number",
   "settings.saveButton": "Save",
+  "settings.newPasswordLabel": "New Password",
+  "settings.newPasswordPlaceholder": "Write Your New Password Here...",
+  "settings.newEmailLabel": "New Email",
+  "settings.newEmailPlaceholder": "Write Your New Email Here...",
+  "settings.changeButton": "Change",
 
   "helppage.title": "Help Page",
   "helppage.createTicketLabel": "Create A Ticket",
   "helppage.createTicketPlaceholder": "Type The Problem Or Support You Need So That We Can Provide Assistance.",
-  "helppage.sendButton": "Send"
+  "helppage.sendButton": "Send",
+
+  "points.dropdown.ascending": "Ascending",
+  "points.dropdown.descending": "Descending",
+  "points.dropdown.none": "None",
+
+  "gender.dropdown.male": "Male",
+  "gender.dropdown.female": "Female",
+  "gender.dropdown.all": "All",
+
+  "name.dropdown.a-z": "A-Z",
+  "name.dropdown.z-a": "Z-A",
+  "name.dropdown.none": "None",
+
+  "date.dropdown.today": "Today",
+  "date.dropdown.yesterday": "Yesterday",
+  "date.dropdown.last7days": "Last 7 Days",
+  "date.dropdown.lastmonth": "Last Month",
+  "date.dropdown.all": "All"
 }

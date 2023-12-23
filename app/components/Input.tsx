@@ -42,7 +42,9 @@ const Input: React.FC<InputProps> = ({
           onChange={onChange}
           type={type}
           className={`${SvgIcon ? "ps-10" : "ps-4 "} 
-          ${className} w-full h-14  border-[#401BFF] border-2 focus:border-[#401BFF] focus:outline-[#401BFF] focus:border-0 rounded-[8px]  text-gray-600`}
+          ${
+            className ? className : "w-full h-14 "
+          }  border-[#401BFF] border-2 focus:border-[#401BFF] focus:outline-[#401BFF] focus:border-0 rounded-[8px]  text-gray-600`}
           placeholder={placeholder}
         />
       </div>

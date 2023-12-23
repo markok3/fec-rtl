@@ -5,6 +5,9 @@ import ClientOnly from "../components/ClientOnly";
 import Navbar from "./components/navbar/Navbar";
 import CreateCustomerModal from "../components/modals/CreateCustomerModal";
 import "../components/AuthorizationContainer/authComponents/phoneNumber.css";
+import ShareYourPageModal from "../components/modals/ShareYourPageModal";
+import RedeemCustomerRewardsModal from "../components/modals/RedeemCustomerRewardsModal";
+import RecordCustomerPointsAndRewardsModal from "../components/modals/RecordCustomerPointsAndRewardsModal";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function HomePageLayout({
@@ -16,8 +19,12 @@ export default function HomePageLayout({
     <ClientOnly>
       <div className="w-full">
         <body className=" relative sm:flex sm:flex-row w-full md:static ">
-          <div className=" absolute bg-white z-50 md:flex md:static min-h-screen">
+          <div className=" absolute  md:flex md:static min-h-screen">
             <SideBar />
+            <ShareYourPageModal />
+            <RedeemCustomerRewardsModal />
+            <RecordCustomerPointsAndRewardsModal />
+            <CreateCustomerModal />
           </div>
           <div className="w-full overflow-auto max-h-screen">
             <div>{children}</div>

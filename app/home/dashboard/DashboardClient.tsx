@@ -5,7 +5,7 @@ import InfoCardList from "./components/InfoCardList";
 import { DataTable } from "@/app/components/DataTable";
 import CustomerActions from "./components/CustomerActions";
 import Navbar from "../components/navbar/Navbar";
-import DateSelect from "@/app/components/DateSelect";
+import DateSelect, { DateOption } from "@/app/components/DateSelect";
 import DarkModeSwitch from "@/app/components/darkModeSwitch/DarkModeSwitch";
 import LanguageSelect from "@/app/components/LanguageSelect";
 import { User, userData } from "@/app/apiMock/apiMock";
@@ -41,7 +41,7 @@ const DashboardClient = () => {
 
   const [sortedData, setSortedData] = useState<User[]>([]);
 
-  const handleDateChange = (date: string) => {
+  const handleDateChange = (date: DateOption) => {
     console.log(date);
 
     let updatedSortedData = applyDateFilter(userData, date);

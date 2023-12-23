@@ -1,6 +1,7 @@
 "use client";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Vazirmatn } from "next/font/google";
 import "./globals.css";
 import CreateCustomerModal from "./components/modals/CreateCustomerModal";
 import ClientOnly from "./components/ClientOnly";
@@ -15,7 +16,7 @@ import { useEffect } from "react";
 import en from "@/app/lang/en.json";
 import ar from "@/app/lang/ar.json";
 
-const inter = Inter({ subsets: ["latin"] });
+const vazirmatn = Vazirmatn({ subsets: ["arabic", "latin"] });
 
 export default function RootLayout({
   children,
@@ -40,13 +41,7 @@ export default function RootLayout({
         lang={selectedLanguage.selectedLanguage}
         dir={selectedLanguage.selectedLanguage}
       >
-        <ClientOnly>
-          <CreateCustomerModal />
-          <RecordCustomerPointsAndRewardsModal />
-          <RedeemCustomerRewardsModal />
-          <ShareYourPageModal />
-        </ClientOnly>
-        <body className={inter.className}>{children}</body>
+        <body className={vazirmatn.className}>{children}</body>
       </html>
     </IntlProvider>
   );
