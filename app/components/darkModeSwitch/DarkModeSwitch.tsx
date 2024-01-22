@@ -4,7 +4,7 @@ import SunSVG from "@/public/images/svgs/switch/sun.svg";
 import LightThemeToggleSVG from "@/public/images/svgs/switch/lightThemeToggle.svg";
 
 const DarkModeSwitch = () => {
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(true);
   // @ts-ignore
   const handleChange = (nextChecked) => {
     setChecked(nextChecked);

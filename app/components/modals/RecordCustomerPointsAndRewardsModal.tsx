@@ -19,7 +19,7 @@ enum STEPS {
 const RecordCustomerPointsAndRewardsModal = () => {
   const pointsPerRyal = 3;
   // change this to points or stamps
-  const userType = "stamps";
+  const userType = "points";
   //   const currentStamps = 2;
   //   const totalStamps = 5;
 
