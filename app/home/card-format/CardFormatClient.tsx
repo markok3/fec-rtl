@@ -18,7 +18,7 @@ const CardFormatClient = () => {
   const [cardFormat, setCardFormat] = useState<any>(null);
 
   // GET USER TYPE FROM API
-  const clientType = "stamps";
+  const clientType = "points";
   const cardHolderName = "Meshari";
 
   console.log(cardFormat);

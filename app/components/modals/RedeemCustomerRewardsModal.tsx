@@ -12,7 +12,7 @@ enum STEPS {
 }
 
 const RedeemCustomerRewardsModal = () => {
-  const userType = "stamps";
+  const userType = "points";
   const redeemRewardsModal = useRedeemRewardsModal();
 
   const ryalPerPoint = 0.5;
